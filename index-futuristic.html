@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibenest - Futuristic Rental Experience</title>
+    <meta name="description" content="Discover your perfect stay with Vibenest - a futuristic Airbnb-style rental platform">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="fonts/font-icons.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/futuristic-design-system.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo/favicon.png">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+</head>
+<body class="body" style="background: var(--color-void); color: var(--color-silver-light); font-family: var(--font-body);">
+
+    <!-- Preloader -->
+    <div class="preload preload-container" style="background: var(--color-void); z-index: 10000;">
+        <div class="preload-logo">
+            <div class="morphing-loader"></div>
+            <p style="color: var(--color-silver-mid); margin-top: var(--spacing-lg); font-size: var(--font-size-sm);">Initializing Vibenest...</p>
+        </div>
+    </div>
+
+    <!-- Main Wrapper -->
+    <div id="wrapper" style="min-height: 100vh; background: linear-gradient(135deg, var(--color-void) 0%, var(--color-void-light) 100%);">
+        
+        <!-- FLOATING HEADER / NAVIGATION -->
+        <header id="header" class="glass" style="
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            border-radius: var(--radius-full);
+            z-index: var(--z-dropdown);
+            padding: var(--spacing-md) var(--spacing-lg);
+            backdrop-filter: blur(var(--glass-blur));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            animation: slideDownFade 0.6s ease-out;
+        ">
+            <!-- Logo -->
+            <div style="display: flex; align-items: center; gap: var(--spacing-lg);">
+                <div class="logo" style="font-size: var(--font-size-lg); font-weight: 700; color: var(--color-neon-cyan);">
+                    🏠 Vibenest
+                </div>
+            </div>
+
+            <!-- OMNI-FINDER Search (Centered) -->
+            <div style="flex: 1; margin: 0 var(--spacing-lg); position: relative;">
+                <input 
+                    type="text" 
+                    class="input-futuristic"
+                    id="omni-search"
+                    placeholder="✨ Find your dream stay... Bali, NYC, Tokyo?"
+                    style="width: 100%; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--radius-full);"
+                />
+                <div id="omni-search-suggestions" class="glass" style="
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    margin-top: var(--spacing-md);
+                    border-radius: var(--radius-lg);
+                    max-height: 300px;
+                    overflow-y: auto;
+                    display: none;
+                    z-index: 100;
+                ">
+                    <div style="padding: var(--spacing-md);">
+                        <p style="font-size: var(--font-size-sm); color: var(--color-silver-dark); margin-bottom: var(--spacing-md);">Suggested Destinations</p>
+                        <div style="display: grid; gap: var(--spacing-sm);">
+                            <button class="btn-ghost" onclick="searchDestination('Bali, Indonesia')">🌴 Bali, Indonesia - Beach Retreats</button>
+                            <button class="btn-ghost" onclick="searchDestination('Tokyo, Japan')">🗻 Tokyo, Japan - Urban Living</button>
+                            <button class="btn-ghost" onclick="searchDestination('Paris, France')">🗼 Paris, France - Romantic Escapes</button>
+                            <button class="btn-ghost" onclick="searchDestination('New York, USA')">🗽 New York, USA - City Adventures</button>
+                            <button class="btn-ghost" onclick="searchDestination('Aspen, Colorado')">❄️ Aspen, Colorado - Mountain Cabins</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Navigation -->
+            <div style="display: flex; align-items: center; gap: var(--spacing-lg);">
+                <!-- Messages/Inquiries Icon -->
+                <button class="btn-ghost" title="Inquiries" onclick="Futuristic.showToast('Check property pages for inquiry options!', 'success', 2000)">
+                    💬
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main style="position: relative; overflow: hidden;">
+            
+            <!-- HERO SECTION - Cinematic Full Screen -->
+            <section id="hero" style="
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+            ">
+                <!-- Background Particles / Ambient Layer -->
+                <div id="ambient-particles" style="
+                    position: absolute;
+                    inset: 0;
+                    pointer-events: none;
+                    z-index: 0;
+                "></div>
+
+                <!-- Hero Content -->
+                <div style="
+                    text-align: center;
+                    z-index: 10;
+                    max-width: 800px;
+                    padding: var(--spacing-3xl);
+                    animation: slideUpFade 0.8s ease-out;
+                ">
+                    <!-- Main Title -->
+                    <h1 style="
+                        font-size: var(--font-size-xl);
+                        font-weight: 600;
+                        margin-bottom: var(--spacing-md);
+                        background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-magenta));
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        letter-spacing: 0.05em;
+                    ">
+                        Discover Your Next Adventure
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p style="
+                        font-size: var(--font-size-md);
+                        color: var(--color-silver-mid);
+                        margin-bottom: var(--spacing-xl);
+                        line-height: 1.8;
+                    ">
+                        Explore unique stays, experience breathtaking places, and connect with hosts around the world. 
+                        Your journey to wanderlust begins here.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
+                        <button class="btn-primary" onclick="goToPage('sidebar-grid-futuristic.html')" style="
+                            padding: var(--spacing-md) var(--spacing-2xl);
+                            font-size: var(--font-size-md);
+                        ">
+                            🔍 Explore Stays
+                        </button>
+                        <button class="btn-secondary" onclick="toggleMoodDial()" style="
+                            padding: var(--spacing-md) var(--spacing-2xl);
+                            font-size: var(--font-size-md);
+                        ">
+                            ✨ Get Inspired
+                        </button>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div style="
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        gap: var(--spacing-xl);
+                        margin-top: var(--spacing-3xl);
+                        padding-top: var(--spacing-2xl);
+                        border-top: 1px solid var(--glass-border);
+                    ">
+                        <div style="animation: slideUpFade 0.8s ease-out 0.1s both;">
+                            <div style="font-size: 2rem; color: var(--color-neon-cyan); font-weight: 700;">50K+</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--color-silver-dark); margin-top: var(--spacing-xs);">Properties Worldwide</div>
+                        </div>
+                        <div style="animation: slideUpFade 0.8s ease-out 0.2s both;">
+                            <div style="font-size: 2rem; color: var(--color-neon-magenta); font-weight: 700;">180+</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--color-silver-dark); margin-top: var(--spacing-xs);">Countries & Regions</div>
+                        </div>
+                        <div style="animation: slideUpFade 0.8s ease-out 0.3s both;">
+                            <div style="font-size: 2rem; color: var(--color-adventure-green); font-weight: 700;">1.5M+</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--color-silver-dark); margin-top: var(--spacing-xs);">Happy Travelers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Elements (3D Parallax) -->
+                <div data-parallax="0.3" style="
+                    position: absolute;
+                    width: 300px;
+                    height: 300px;
+                    border-radius: 50%;
+                    background: radial-gradient(circle, var(--color-neon-cyan), transparent);
+                    opacity: 0.1;
+                    top: 10%;
+                    right: 5%;
+                    z-index: 1;
+                    filter: blur(60px);
+                "></div>
+
+                <div data-parallax="0.5" style="
+                    position: absolute;
+                    width: 400px;
+                    height: 400px;
+                    border-radius: 50%;
+                    background: radial-gradient(circle, var(--color-neon-magenta), transparent);
+                    opacity: 0.08;
+                    bottom: -100px;
+                    left: -50px;
+                    z-index: 1;
+                    filter: blur(80px);
+                "></div>
+            </section>
+
+            <!-- FEATURED PROPERTIES SECTION -->
+            <section style="
+                padding: var(--spacing-3xl) var(--spacing-2xl);
+                background: var(--color-void-light);
+                position: relative;
+                z-index: 10;
+            ">
+                <div style="max-width: 1400px; margin: 0 auto;">
+                    <!-- Section Header -->
+                    <div style="margin-bottom: var(--spacing-2xl); text-align: center;">
+                        <h2 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--spacing-md);">
+                            Featured Stays This Week
+                        </h2>
+                        <p style="color: var(--color-silver-dark); margin-bottom: var(--spacing-lg);">
+                            Handpicked properties that match your wanderlust
+                        </p>
+                    </div>
+
+                    <!-- Portal Cards Grid -->
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+                        gap: var(--spacing-2xl);
+                    ">
+                        <!-- Card 1 -->
+                        <div class="portal-card">
+                            <div class="portal-card-image">
+                                <img src="images/banner/banner-01.jpg" alt="Luxury Bali Villa" data-film-develop>
+                            </div>
+                            <div class="portal-card-content">
+                                <h3 class="portal-card-title">Luxury Bali Villa</h3>
+                                <div class="portal-card-location">🏖️ Bali, Indonesia</div>
+                                <div class="portal-card-meta">
+                                    <span>⭐ 4.9 (428 reviews)</span>
+                                    <span>🛏️ 4 beds</span>
+                                </div>
+                                <div class="portal-card-price">
+                                    $420<span class="period">/night</span>
+                                </div>
+                                <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                                    <button class="btn-primary" style="flex: 1;" onclick="goToPage('property-details-v1.html')">Book Now</button>
+                                    <button class="btn-secondary" onclick="addToWishlist(event)" style="padding: var(--spacing-sm) var(--spacing-md);">❤️</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="portal-card">
+                            <div class="portal-card-image">
+                                <img src="images/banner/banner-02.jpg" alt="Tokyo Modern Loft" data-film-develop>
+                            </div>
+                            <div class="portal-card-content">
+                                <h3 class="portal-card-title">Tokyo Modern Loft</h3>
+                                <div class="portal-card-location">🌆 Tokyo, Japan</div>
+                                <div class="portal-card-meta">
+                                    <span>⭐ 4.8 (356 reviews)</span>
+                                    <span>🛏️ 2 beds</span>
+                                </div>
+                                <div class="portal-card-price">
+                                    $280<span class="period">/night</span>
+                                </div>
+                                <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                                    <button class="btn-primary" style="flex: 1;" onclick="goToPage('property-details-v2.html')">Book Now</button>
+                                    <button class="btn-secondary" onclick="addToWishlist(event)" style="padding: var(--spacing-sm) var(--spacing-md);">❤️</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="portal-card">
+                            <div class="portal-card-image">
+                                <img src="images/banner/banner-03.jpg" alt="Paris Apartment" data-film-develop>
+                            </div>
+                            <div class="portal-card-content">
+                                <h3 class="portal-card-title">Parisian Charm</h3>
+                                <div class="portal-card-location">✨ Paris, France</div>
+                                <div class="portal-card-meta">
+                                    <span>⭐ 4.9 (512 reviews)</span>
+                                    <span>🛏️ 3 beds</span>
+                                </div>
+                                <div class="portal-card-price">
+                                    $350<span class="period">/night</span>
+                                </div>
+                                <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                                    <button class="btn-primary" style="flex: 1;" onclick="goToPage('property-details-v3.html')">Book Now</button>
+                                    <button class="btn-secondary" onclick="addToWishlist(event)" style="padding: var(--spacing-sm) var(--spacing-md);">❤️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View All Button -->
+                    <div style="text-align: center; margin-top: var(--spacing-2xl);">
+                        <button class="btn-secondary" onclick="goToPage('sidebar-grid.html')">
+                            Browse All Properties →
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HOW IT WORKS SECTION -->
+            <section style="
+                padding: var(--spacing-3xl) var(--spacing-2xl);
+                position: relative;
+                z-index: 10;
+            ">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <h2 style="
+                        font-size: var(--font-size-lg);
+                        font-weight: 600;
+                        text-align: center;
+                        margin-bottom: var(--spacing-3xl);
+                    ">
+                        How Vibenest Works
+                    </h2>
+
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                        gap: var(--spacing-2xl);
+                    ">
+                        <!-- Step 1 -->
+                        <div class="glass" style="
+                            padding: var(--spacing-xl);
+                            border-radius: var(--radius-lg);
+                            text-align: center;
+                            animation: slideUpFade 0.8s ease-out;
+                        ">
+                            <div style="
+                                font-size: 3rem;
+                                margin-bottom: var(--spacing-md);
+                            ">🔍</div>
+                            <h3 style="font-weight: 600; margin-bottom: var(--spacing-md);">Search & Discover</h3>
+                            <p style="color: var(--color-silver-dark); font-size: var(--font-size-sm);">
+                                Explore thousands of unique properties across the globe using our intelligent search.
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="glass" style="
+                            padding: var(--spacing-xl);
+                            border-radius: var(--radius-lg);
+                            text-align: center;
+                            animation: slideUpFade 0.8s ease-out 0.1s both;
+                        ">
+                            <div style="
+                                font-size: 3rem;
+                                margin-bottom: var(--spacing-md);
+                            ">🗓️</div>
+                            <h3 style="font-weight: 600; margin-bottom: var(--spacing-md);">Pick Dates & Details</h3>
+                            <p style="color: var(--color-silver-dark); font-size: var(--font-size-sm);">
+                                Select your travel dates and customize your perfect stay experience.
+                            </p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="glass" style="
+                            padding: var(--spacing-xl);
+                            border-radius: var(--radius-lg);
+                            text-align: center;
+                            animation: slideUpFade 0.8s ease-out 0.2s both;
+                        ">
+                            <div style="
+                                font-size: 3rem;
+                                margin-bottom: var(--spacing-md);
+                            ">💳</div>
+                            <h3 style="font-weight: 600; margin-bottom: var(--spacing-md);">Secure Booking</h3>
+                            <p style="color: var(--color-silver-dark); font-size: var(--font-size-sm);">
+                                Complete your reservation with secure payment and instant confirmation.
+                            </p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="glass" style="
+                            padding: var(--spacing-xl);
+                            border-radius: var(--radius-lg);
+                            text-align: center;
+                            animation: slideUpFade 0.8s ease-out 0.3s both;
+                        ">
+                            <div style="
+                                font-size: 3rem;
+                                margin-bottom: var(--spacing-md);
+                            ">✈️</div>
+                            <h3 style="font-weight: 600; margin-bottom: var(--spacing-md);">Enjoy Your Stay</h3>
+                            <p style="color: var(--color-silver-dark); font-size: var(--font-size-sm);">
+                                Check in and immerse yourself in your new adventure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer style="
+                background: var(--color-void-lighter);
+                padding: var(--spacing-3xl) var(--spacing-2xl);
+                border-top: 1px solid var(--glass-border);
+                position: relative;
+                z-index: 10;
+            ">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: var(--spacing-2xl);
+                        margin-bottom: var(--spacing-2xl);
+                    ">
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: var(--spacing-md);">🏠 Vibenest</h4>
+                            <p style="color: var(--color-silver-dark); font-size: var(--font-size-sm);">
+                                Your gateway to unforgettable travel experiences worldwide.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: var(--spacing-md);">For Guests</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block; margin-bottom: var(--spacing-sm);">Browse Properties</a></li>
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block; margin-bottom: var(--spacing-sm);">How It Works</a></li>
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block;">FAQs</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: var(--spacing-md);">For Hosts</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block; margin-bottom: var(--spacing-sm);">List Your Property</a></li>
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block; margin-bottom: var(--spacing-sm);">Host Guide</a></li>
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block;">Pricing</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: var(--spacing-md);">Company</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block; margin-bottom: var(--spacing-sm);">About Us</a></li>
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block; margin-bottom: var(--spacing-sm);">Privacy Policy</a></li>
+                                <li><a href="#" class="btn-ghost" style="padding: 0; display: block;">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="
+                        border-top: 1px solid var(--glass-border);
+                        padding-top: var(--spacing-xl);
+                        text-align: center;
+                        color: var(--color-silver-dark);
+                        font-size: var(--font-size-sm);
+                    ">
+                        <p>&copy; 2024 Vibenest. All rights reserved. | Built with ✨ for travelers by travelers.</p>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/futuristic-animations.js"></script>
+    <script>
+        // Helper Functions
+        function goToPage(url) {
+            Futuristic.transitionPage(url);
+        }
+
+        function toggleUserMenu() {
+            const menu = document.getElementById('user-menu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function toggleMoodDial() {
+            Futuristic.showToast('🎭 Mood Dial: Explore by Vibe!', 'success', 3000);
+            // Show mood filter options
+            showMoodOptions();
+        }
+
+        function showMoodOptions() {
+            const moods = ['🏖️ Cozy', '🏔️ Adventure', '💕 Romantic', '💼 Business', '👨‍👩‍👧‍👦 Family', '🎉 Wild'];
+            const choice = moods[Math.floor(Math.random() * moods.length)];
+            Futuristic.showToast(`Selected: ${choice}`, 'success', 2000);
+        }
+
+        function searchDestination(destination) {
+            Futuristic.showToast(`🌍 Searching ${destination}...`, 'success', 1500);
+            setTimeout(() => {
+                goToPage('sidebar-grid.html');
+            }, 1000);
+        }
+
+        function addToWishlist(event) {
+            event.preventDefault();
+            Futuristic.createFloatingHeart(event.clientX, event.clientY);
+            Futuristic.showToast('❤️ Added to Wishlist!', 'success', 2000);
+            Futuristic.triggerHaptic('success');
+        }
+
+        function logout() {
+            Futuristic.showToast('👋 Goodbye! See you soon.', 'success', 2000);
+            setTimeout(() => {
+                document.location.href = 'index-futuristic.html';
+            }, 1500);
+        }
+
+        // Ambient Particles Background
+        function createAmbientParticles() {
+            const container = document.getElementById('ambient-particles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                const size = Math.random() * 4 + 2;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const duration = Math.random() * 20 + 10;
+
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: var(--color-neon-cyan);
+                    border-radius: 50%;
+                    left: ${x}%;
+                    top: ${y}%;
+                    opacity: ${Math.random() * 0.3 + 0.1};
+                    animation: float ${duration}s ease-in-out infinite;
+                    box-shadow: 0 0 ${size * 2}px var(--color-neon-cyan);
+                `;
+                container.appendChild(particle);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createAmbientParticles();
+            
+            // Omni-search functionality
+            document.getElementById('omni-search').addEventListener('focus', function() {
+                document.getElementById('omni-search-suggestions').style.display = 'block';
+            });
+
+            document.getElementById('omni-search').addEventListener('blur', function() {
+                setTimeout(() => {
+                    document.getElementById('omni-search-suggestions').style.display = 'none';
+                }, 200);
+            });
+
+            // Close user menu when clicking elsewhere
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#user-avatar') && !e.target.closest('#user-menu')) {
+                    document.getElementById('user-menu').style.display = 'none';
+                }
+            });
+        });
+
+        // Add floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.1; }
+                25% { transform: translateY(-20px) translateX(10px); opacity: 0.3; }
+                50% { transform: translateY(-40px) translateX(-10px); opacity: 0.2; }
+                75% { transform: translateY(-20px) translateX(15px); opacity: 0.3; }
+            }
+
+            @keyframes slideDownFade {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes scale {
+                from { transform: scale(0); }
+                to { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+</html>

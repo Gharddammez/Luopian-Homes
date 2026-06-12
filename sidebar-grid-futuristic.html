@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Stays - Vibenest</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="fonts/font-icons.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/futuristic-design-system.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="shortcut icon" href="images/logo/favicon.png">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+</head>
+<body class="body" style="background: var(--color-void); color: var(--color-silver-light);">
+
+    <!-- Preloader -->
+    <div class="preload preload-container" style="background: var(--color-void);">
+        <div class="preload-logo">
+            <div class="morphing-loader"></div>
+        </div>
+    </div>
+
+    <div id="wrapper" style="min-height: 100vh; background: var(--color-void);">
+        
+        <!-- FLOATING HEADER -->
+        <header id="header" class="glass" style="
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            border-radius: var(--radius-full);
+            z-index: var(--z-dropdown);
+            padding: var(--spacing-md) var(--spacing-lg);
+            backdrop-filter: blur(var(--glass-blur));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        ">
+            <a href="index-futuristic.html" style="font-size: var(--font-size-lg); font-weight: 700; color: var(--color-neon-cyan); text-decoration: none;">
+                🏠 Vibenest
+            </a>
+            <input 
+                type="text" 
+                class="input-futuristic"
+                placeholder="✨ Search stays..."
+                style="flex: 1; margin: 0 var(--spacing-lg); max-width: 300px;"
+            />
+            <button class="btn-secondary" onclick="location.href='index-futuristic.html'" style="padding: var(--spacing-xs) var(--spacing-md);">
+                ← Back Home
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main style="padding-top: 100px; min-height: 100vh;">
+            <div style="max-width: 1600px; margin: 0 auto; padding: var(--spacing-2xl);">
+                
+                <!-- Top Section: Title & View Toggle -->
+                <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: var(--spacing-2xl);
+                    flex-wrap: wrap;
+                    gap: var(--spacing-lg);
+                ">
+                    <div>
+                        <h1 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--spacing-md);">
+                            Discover Stays in Bali
+                        </h1>
+                        <p style="color: var(--color-silver-dark);">
+                            Showing 24 unique properties • Sort by: Recommended
+                        </p>
+                    </div>
+                    
+                    <!-- View Toggle -->
+                    <div class="glass" style="padding: var(--spacing-sm); border-radius: var(--radius-full); display: flex; gap: var(--spacing-xs);">
+                        <button id="view-grid" class="btn-ghost" style="padding: var(--spacing-xs) var(--spacing-md); background: var(--glass-bg-light); border-radius: var(--radius-md);">
+                            📊 Grid
+                        </button>
+                        <button id="view-list" class="btn-ghost" style="padding: var(--spacing-xs) var(--spacing-md);">
+                            📋 List
+                        </button>
+                        <button id="view-map" class="btn-ghost" style="padding: var(--spacing-xs) var(--spacing-md);">
+                            🗺️ Map
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Grid: Filters + Results -->
+                <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--spacing-2xl);">
+                    
+                    <!-- FILTERS SIDEBAR - The Mood Dial -->
+                    <aside style="height: fit-content; position: sticky; top: 120px;">
+                        <div class="glass" style="
+                            padding: var(--spacing-lg);
+                            border-radius: var(--radius-lg);
+                        ">
+                            <h3 style="font-weight: 600; margin-bottom: var(--spacing-lg); display: flex; align-items: center; gap: var(--spacing-md);">
+                                🎭 Filter by Mood
+                            </h3>
+
+                            <!-- Mood Dial (Circular Filter) -->
+                            <div style="
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: var(--spacing-md);
+                                margin-bottom: var(--spacing-lg);
+                            ">
+                                <button class="btn-ghost mood-btn" data-mood="cozy" onclick="filterByMood('cozy')" style="
+                                    padding: var(--spacing-md);
+                                    border-radius: var(--radius-md);
+                                    background: var(--glass-bg-light);
+                                    transition: all var(--transition-base);
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: var(--spacing-sm);
+                                ">
+                                    <span style="font-size: 1.5rem;">🏖️</span>
+                                    <span style="font-size: var(--font-size-sm);">Cozy</span>
+                                </button>
+                                <button class="btn-ghost mood-btn" data-mood="adventure" onclick="filterByMood('adventure')" style="
+                                    padding: var(--spacing-md);
+                                    border-radius: var(--radius-md);
+                                    background: transparent;
+                                    transition: all var(--transition-base);
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: var(--spacing-sm);
+                                ">
+                                    <span style="font-size: 1.5rem;">🏔️</span>
+                                    <span style="font-size: var(--font-size-sm);">Adventure</span>
+                                </button>
+                                <button class="btn-ghost mood-btn" data-mood="romantic" onclick="filterByMood('romantic')" style="
+                                    padding: var(--spacing-md);
+                                    border-radius: var(--radius-md);
+                                    background: transparent;
+                                    transition: all var(--transition-base);
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: var(--spacing-sm);
+                                ">
+                                    <span style="font-size: 1.5rem;">💕</span>
+                                    <span style="font-size: var(--font-size-sm);">Romantic</span>
+                                </button>
+                                <button class="btn-ghost mood-btn" data-mood="business" onclick="filterByMood('business')" style="
+                                    padding: var(--spacing-md);
+                                    border-radius: var(--radius-md);
+                                    background: transparent;
+                                    transition: all var(--transition-base);
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: var(--spacing-sm);
+                                ">
+                                    <span style="font-size: 1.5rem;">💼</span>
+                                    <span style="font-size: var(--font-size-sm);">Business</span>
+                                </button>
+                                <button class="btn-ghost mood-btn" data-mood="family" onclick="filterByMood('family')" style="
+                                    padding: var(--spacing-md);
+                                    border-radius: var(--radius-md);
+                                    background: transparent;
+                                    transition: all var(--transition-base);
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: var(--spacing-sm);
+                                ">
+                                    <span style="font-size: 1.5rem;">👨‍👩‍👧‍👦</span>
+                                    <span style="font-size: var(--font-size-sm);">Family</span>
+                                </button>
+                                <button class="btn-ghost mood-btn" data-mood="wild" onclick="filterByMood('wild')" style="
+                                    padding: var(--spacing-md);
+                                    border-radius: var(--radius-md);
+                                    background: transparent;
+                                    transition: all var(--transition-base);
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: var(--spacing-sm);
+                                ">
+                                    <span style="font-size: 1.5rem;">🎉</span>
+                                    <span style="font-size: var(--font-size-sm);">Wild</span>
+                                </button>
+                            </div>
+
+                            <hr style="border: 1px solid var(--glass-border); margin: var(--spacing-lg) 0;">
+
+                            <!-- Price Filter -->
+                            <div style="margin-bottom: var(--spacing-lg);">
+                                <label style="font-weight: 600; display: block; margin-bottom: var(--spacing-md);">💰 Price Range</label>
+                                <input type="range" min="0" max="1000" value="500" class="input-futuristic" style="width: 100%; cursor: pointer;">
+                                <div style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    font-size: var(--font-size-sm);
+                                    color: var(--color-silver-dark);
+                                    margin-top: var(--spacing-sm);
+                                ">
+                                    <span>$0</span>
+                                    <span>$1000+</span>
+                                </div>
+                            </div>
+
+                            <!-- Property Type Filter -->
+                            <div style="margin-bottom: var(--spacing-lg);">
+                                <label style="font-weight: 600; display: block; margin-bottom: var(--spacing-md);">🏠 Property Type</label>
+                                <div style="display: grid; gap: var(--spacing-sm);">
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox" checked>
+                                        <span style="font-size: var(--font-size-sm);">Entire Place</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox">
+                                        <span style="font-size: var(--font-size-sm);">Private Room</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox">
+                                        <span style="font-size: var(--font-size-sm);">Shared Room</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Amenities Filter -->
+                            <div>
+                                <label style="font-weight: 600; display: block; margin-bottom: var(--spacing-md);">✨ Amenities</label>
+                                <div style="display: grid; gap: var(--spacing-sm);">
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox">
+                                        <span style="font-size: var(--font-size-sm);">WiFi</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox">
+                                        <span style="font-size: var(--font-size-sm);">Pool</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox">
+                                        <span style="font-size: var(--font-size-sm);">Kitchen</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                                        <input type="checkbox">
+                                        <span style="font-size: var(--font-size-sm);">AC</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button class="btn-secondary" style="width: 100%; margin-top: var(--spacing-lg);" onclick="Futuristic.showToast('Filters applied!', 'success', 2000);">
+                                Apply Filters
+                            </button>
+                        </div>
+                    </aside>
+
+                    <!-- RESULTS GRID -->
+                    <section id="results-container">
+                        <div id="portal-cards-grid" style="
+                            display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+                            gap: var(--spacing-2xl);
+                        ">
+                            <!-- Portal Cards will be generated here -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Load More Button -->
+                <div style="text-align: center; margin-top: var(--spacing-3xl);">
+                    <button class="btn-secondary" onclick="Futuristic.showToast('Loading more stays...', 'success', 2000);" style="
+                        padding: var(--spacing-md) var(--spacing-2xl);
+                    ">
+                        Load More Properties ↓
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/futuristic-animations.js"></script>
+    <script>
+        // Sample properties data
+        const properties = [
+            {
+                id: 1,
+                title: "Luxury Bali Villa",
+                location: "Bali, Indonesia",
+                image: "images/banner/banner-01.jpg",
+                price: 420,
+                rating: 4.9,
+                reviews: 428,
+                beds: 4,
+                mood: "cozy"
+            },
+            {
+                id: 2,
+                title: "Tokyo Modern Loft",
+                location: "Tokyo, Japan",
+                image: "images/banner/banner-02.jpg",
+                price: 280,
+                rating: 4.8,
+                reviews: 356,
+                beds: 2,
+                mood: "business"
+            },
+            {
+                id: 3,
+                title: "Parisian Charm",
+                location: "Paris, France",
+                image: "images/banner/banner-03.jpg",
+                price: 350,
+                rating: 4.9,
+                reviews: 512,
+                beds: 3,
+                mood: "romantic"
+            },
+            {
+                id: 4,
+                title: "Mountain Retreat",
+                location: "Aspen, Colorado",
+                image: "images/banner/banner-04.jpg",
+                price: 550,
+                rating: 4.7,
+                reviews: 289,
+                beds: 5,
+                mood: "adventure"
+            },
+            {
+                id: 5,
+                title: "NYC Urban Loft",
+                location: "New York, USA",
+                image: "images/banner/banner-05.jpg",
+                price: 380,
+                rating: 4.8,
+                reviews: 401,
+                beds: 2,
+                mood: "business"
+            },
+            {
+                id: 6,
+                title: "Malibu Beach House",
+                location: "Malibu, California",
+                image: "images/banner/banner-06.jpg",
+                price: 650,
+                rating: 4.95,
+                reviews: 567,
+                beds: 4,
+                mood: "romantic"
+            },
+            {
+                id: 7,
+                title: "Bangkok Boutique",
+                location: "Bangkok, Thailand",
+                image: "images/banner/banner-01.jpg",
+                price: 150,
+                rating: 4.6,
+                reviews: 234,
+                beds: 2,
+                mood: "adventure"
+            },
+            {
+                id: 8,
+                title: "Swiss Chalet",
+                location: "Zermatt, Switzerland",
+                image: "images/banner/banner-02.jpg",
+                price: 480,
+                rating: 4.9,
+                reviews: 378,
+                beds: 3,
+                mood: "family"
+            },
+        ];
+
+        // Create portal card HTML
+        function createPortalCard(property) {
+            return `
+                <div class="portal-card">
+                    <div class="portal-card-image">
+                        <img src="${property.image}" alt="${property.title}" data-film-develop>
+                    </div>
+                    <div class="portal-card-content">
+                        <h3 class="portal-card-title">${property.title}</h3>
+                        <div class="portal-card-location">🏖️ ${property.location}</div>
+                        <div class="portal-card-meta">
+                            <span>⭐ ${property.rating} (${property.reviews})</span>
+                            <span>🛏️ ${property.beds} beds</span>
+                        </div>
+                        <div class="portal-card-price">
+                            $${property.price}<span class="period">/night</span>
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                            <button class="btn-primary" style="flex: 1;" onclick="goToProperty(${property.id})">Book Now</button>
+                            <button class="btn-secondary" onclick="addToWishlist(event)" style="padding: var(--spacing-sm) var(--spacing-md);">❤️</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render properties
+        function renderProperties(filter = null) {
+            const container = document.getElementById('portal-cards-grid');
+            const filtered = filter ? properties.filter(p => p.mood === filter) : properties;
+            
+            container.innerHTML = filtered.map(createPortalCard).join('');
+            
+            // Re-initialize animations for new elements
+            setupImageLoading();
+            setupButtonAnimations();
+        }
+
+        // Filter functions
+        function filterByMood(mood) {
+            Futuristic.createParticleExplosion(window.innerWidth / 2, window.innerHeight / 2, '#06B6D4');
+            renderProperties(mood);
+            
+            // Update mood button styles
+            document.querySelectorAll('.mood-btn').forEach(btn => {
+                btn.style.background = btn.dataset.mood === mood ? 'var(--glass-bg-light)' : 'transparent';
+            });
+        }
+
+        function addToWishlist(event) {
+            event.preventDefault();
+            Futuristic.createFloatingHeart(event.clientX, event.clientY);
+            Futuristic.showToast('❤️ Added to Wishlist!', 'success', 2000);
+        }
+
+        function goToProperty(id) {
+            Futuristic.transitionPage('property-details-v1.html');
+        }
+
+        // View toggle
+        document.getElementById('view-grid').addEventListener('click', function() {
+            document.getElementById('results-container').innerHTML = '<div id="portal-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: var(--spacing-2xl);"></div>';
+            renderProperties();
+        });
+
+        document.getElementById('view-list').addEventListener('click', function() {
+            const container = document.getElementById('results-container');
+            container.innerHTML = `
+                <div style="display: grid; gap: var(--spacing-lg);">
+                    ${properties.map(p => `
+                        <div class="glass" style="padding: var(--spacing-lg); border-radius: var(--radius-lg); display: flex; gap: var(--spacing-lg); align-items: center;">
+                            <img src="${p.image}" alt="${p.title}" style="width: 150px; height: 150px; border-radius: var(--radius-lg); object-fit: cover;">
+                            <div style="flex: 1;">
+                                <h3 style="font-weight: 600; margin-bottom: var(--spacing-sm);">${p.title}</h3>
+                                <p style="color: var(--color-silver-dark); margin-bottom: var(--spacing-sm);">${p.location}</p>
+                                <div style="display: flex; gap: var(--spacing-lg); font-size: var(--font-size-sm);">
+                                    <span>⭐ ${p.rating} (${p.reviews})</span>
+                                    <span>🛏️ ${p.beds} beds</span>
+                                    <span style="color: var(--color-neon-cyan); font-weight: 600;">$${p.price}/night</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary" onclick="goToProperty(${p.id})">Book Now</button>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProperties();
+        });
+
+        function setupImageLoading() {
+            const images = document.querySelectorAll('img[data-film-develop]');
+            images.forEach((img) => {
+                img.style.animation = 'filmDevelop 0.8s ease-out forwards';
+            });
+        }
+
+        function setupButtonAnimations() {
+            document.querySelectorAll('button').forEach((button) => {
+                button.addEventListener('click', function (e) {
+                    Futuristic.createParticleExplosion(e.clientX, e.clientY);
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

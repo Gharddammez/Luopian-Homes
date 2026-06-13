@@ -683,7 +683,7 @@
 }
 
 // widget home box
-.Luopian's Homes-box {
+.homelengo-box {
     display: block;
     border-radius: 16px;
     overflow: hidden;
@@ -858,7 +858,7 @@
 }
 
 .flat-recommended {
-    .Luopian's Homes-box {
+    .homelengo-box {
         margin-bottom: 30px;
     }
     .tf-btn {
@@ -1575,7 +1575,7 @@
     }
     .box-right {
         flex-grow: 1;
-        .Luopian's Homes-box:not(:last-child) {
+        .homelengo-box:not(:last-child) {
             margin-bottom: 30px;
         }
     }
@@ -1771,7 +1771,7 @@
 }
 
 // categories
-.Luopian's Homes-categories {
+.homelengo-categories {
     padding: 30px 24px 24px 24px;
     background-color: $white;
     border-radius: 16px;
@@ -1876,7 +1876,7 @@
     padding-bottom: 40px;
     position: relative;
 }
-.Luopian's Homes-categories-v2 {
+.homelengo-categories-v2 {
     width: 125px;
     height: 116px;
     display: flex;
@@ -2287,7 +2287,7 @@
             top: 0;
         }
     }
-    .Luopian's Homes-box {
+    .homelengo-box {
         margin-bottom: 30px;
     }
     &.layout-2 {
@@ -2368,7 +2368,7 @@
             top: 0;
         }
     }
-    .Luopian's Homes-box {
+    .homelengo-box {
         margin-bottom: 30px;
     }
 }

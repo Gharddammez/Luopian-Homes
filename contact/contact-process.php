@@ -1,8 +1,8 @@
 <?php
 
-// define("WEBMASTER_EMAIL", 'onyangom383@gmail.com ');
+// define("WEBMASTER_EMAIL", 'themesflat@gmail.com');
 //$address = "example@themeforest.net";
-$address = "onyangom383@gmail.com ";
+$address = "themesflat@gmail.com";
 if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
 
 $error = false;

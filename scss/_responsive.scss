@@ -18,7 +18,7 @@
         row-gap: 30px;
         column-gap: 15px;
     }
-    .Luopian's Homes-box {
+    .homelengo-box {
         &.list-style-2 {
             .archive-top {
                 width: 40%;
@@ -352,7 +352,7 @@
             }
         }
     }
-    .Luopian's Homes-categories {
+    .homelengo-categories {
         &.active,
         &:hover {
             box-shadow: 0px 30px 60px 0px #0000001a;
@@ -415,7 +415,7 @@
             grid-template-columns: repeat(2, 1fr);
         }
     }
-    .Luopian's Homes-box {
+    .homelengo-box {
         &.list-style-2 {
             .archive-top {
                 width: 33.5%;
@@ -941,7 +941,7 @@
     .grid-location-v2 {
         grid-template-columns: 1fr 1fr;
     }
-    .Luopian's Homes-box.style-3 .images-group .images-style {
+    .homelengo-box.style-3 .images-group .images-style {
         height: 100%;
     }
     .wrap-banner {
@@ -2043,7 +2043,7 @@
             }
         }
     }
-    .Luopian's Homes-box {
+    .homelengo-box {
         &.list-style-1 {
             display: block;
         }
@@ -2227,7 +2227,7 @@
     .layout-wrap .box-agent-avt {
         flex-wrap: wrap;
     }
-    .Luopian's Homes-box.list-style-1 .archive-top {
+    .homelengo-box.list-style-1 .archive-top {
         width: 100%;
     }
 }

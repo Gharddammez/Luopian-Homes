@@ -61,11 +61,11 @@
         locationData(
           "images/home/house-3.jpg",
           "property-details-v1.html",
-          "Staycation / BnB",
-          "Diani Beach, Mombasa, Kenya",
+          "Casa Lomas de Machalí Machas",
+          "145 Brooklyn Ave, Califonia, New York",
           "images/avatar/avt-png10.png",
           "Arlene McCoy",
-          "ksh. 6000/="
+          "$7250,00"
         ),
 
         40.711536,
@@ -77,11 +77,11 @@
         locationData(
           "images/home/house-1.jpg",
           "property-details-v1.html",
-          "Staycation / BnB",
-          "Diani Beach, Mombasa, Kenya",
+          "Casa Lomas de Machalí Machas",
+          "145 Brooklyn Ave, Califonia, New York",
           "images/avatar/avt-png10.png",
           "Arlene McCoy",
-          "ksh. 6000/="
+          "$7250,00"
         ),
 
         40.710885,
@@ -93,11 +93,11 @@
         locationData(
           "images/home/house-2.jpg",
           "property-details-v1.html",
-          "Staycation / BnB",
-          "Diani Beach, Mombasa, Kenya",
+          "Casa Lomas de Machalí Machas",
+          "145 Brooklyn Ave, Califonia, New York",
           "images/avatar/avt-png10.png",
           "Arlene McCoy",
-          "ksh. 6000/="
+          "$7250,00"
         ),
 
         40.715504,
@@ -109,11 +109,11 @@
         locationData(
           "images/home/house-4.jpg",
           "property-details-v1.html",
-          "Staycation / BnB",
-          "Diani Beach, Mombasa, Kenya",
+          "Casa Lomas de Machalí Machas",
+          "145 Brooklyn Ave, Califonia, New York",
           "images/avatar/avt-png10.png",
           "Arlene McCoy",
-          "ksh. 6000/="
+          "$7250,00"
         ),
 
         40.711926,
@@ -125,11 +125,11 @@
         locationData(
           "images/home/house-7.jpg",
           "property-details-v1.html",
-          "Staycation / BnB",
-          "Diani Beach, Mombasa, Kenya",
+          "Casa Lomas de Machalí Machas",
+          "145 Brooklyn Ave, Califonia, New York",
           "images/avatar/avt-png10.png",
           "Arlene McCoy",
-          "ksh. 6000/="
+          "$7250,00"
         ),
 
         40.709024,
@@ -141,11 +141,11 @@
         locationData(
           "images/home/house-6.jpg",
           "property-details-v1.html",
-          "Staycation / BnB",
-          "Diani Beach, Mombasa, Kenya",
+          "Casa Lomas de Machalí Machas",
+          "145 Brooklyn Ave, Califonia, New York",
           "images/avatar/avt-png10.png",
           "Arlene McCoy",
-          "ksh. 6000/="
+          "$7250,00"
         ),
 
         40.704015,

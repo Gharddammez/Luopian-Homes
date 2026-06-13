@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------
-    * Name: Luopian's Homes
+    * Name: Homelengo
     * Version: 1.0.1
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -5302,17 +5302,17 @@ label {
   padding-left: 44px !important;
 }
 
-.Luopian's Homes-box {
+.homelengo-box {
   display: block;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid #e4e4e4;
 }
-.Luopian's Homes-box .images-group {
+.homelengo-box .images-group {
   position: relative;
   display: block;
 }
-.Luopian's Homes-box .images-group .top {
+.homelengo-box .images-group .top {
   left: 16px;
   right: 16px;
   top: 16px;
@@ -5324,7 +5324,7 @@ label {
   gap: 8px;
   flex-wrap: wrap;
 }
-.Luopian's Homes-box .images-group .bottom {
+.homelengo-box .images-group .bottom {
   position: absolute;
   left: 20px;
   right: 20px;
@@ -5335,7 +5335,7 @@ label {
   gap: 4px;
   color: #ffffff;
 }
-.Luopian's Homes-box .images-group:after {
+.homelengo-box .images-group:after {
   position: absolute;
   content: "";
   top: 0;
@@ -5349,11 +5349,11 @@ label {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.Luopian's Homes-box .images-style {
+.homelengo-box .images-style {
   position: relative;
   overflow: hidden;
 }
-.Luopian's Homes-box .images-style img {
+.homelengo-box .images-style img {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -5361,76 +5361,76 @@ label {
   transition: all 0.3s ease;
   width: 100%;
 }
-.Luopian's Homes-box .content-top {
+.homelengo-box .content-top {
   padding-bottom: 24px;
   margin-bottom: 24px;
   border-bottom: 1px solid #e4e4e4;
 }
-.Luopian's Homes-box .content-top .meta-list {
+.homelengo-box .content-top .meta-list {
   margin-top: 12px;
   display: flex;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
 }
-.Luopian's Homes-box .content-top .meta-list .item {
+.homelengo-box .content-top .meta-list .item {
   display: flex;
   align-items: center;
   gap: 4px;
 }
-.Luopian's Homes-box .content-top .meta-list .item .icon {
+.homelengo-box .content-top .meta-list .item .icon {
   font-size: 16px;
   color: #a3abb0;
 }
-.Luopian's Homes-box .content-top .archive-bottom {
+.homelengo-box .content-top .archive-bottom {
   padding: 0;
 }
-.Luopian's Homes-box .archive-bottom {
+.homelengo-box .archive-bottom {
   padding: 20px;
 }
-.Luopian's Homes-box .archive-bottom .content-bottom {
+.homelengo-box .archive-bottom .content-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.Luopian's Homes-box:hover:not(.list-style-1, .list-style-2) .images-style img {
+.homelengo-box:hover:not(.list-style-1, .list-style-2) .images-style img {
   transform: scale(1.05);
 }
-.Luopian's Homes-box.list-style-1 {
+.homelengo-box.list-style-1 {
   display: flex;
   border-color: transparent;
 }
-.Luopian's Homes-box.list-style-1 .images-style {
+.homelengo-box.list-style-1 .images-style {
   height: 100%;
 }
-.Luopian's Homes-box.list-style-1 .images-style img {
+.homelengo-box.list-style-1 .images-style img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.Luopian's Homes-box.list-style-1 .archive-top {
+.homelengo-box.list-style-1 .archive-top {
   width: 36.5%;
 }
-.Luopian's Homes-box.list-style-1 .archive-top .top {
+.homelengo-box.list-style-1 .archive-top .top {
   left: 10px;
   top: 10px;
 }
-.Luopian's Homes-box.list-style-1 .images-group {
+.homelengo-box.list-style-1 .images-group {
   width: 100%;
   height: 100%;
 }
-.Luopian's Homes-box.list-style-1 .images-group::after {
+.homelengo-box.list-style-1 .images-group::after {
   content: none;
 }
-.Luopian's Homes-box.list-style-1 .content-top {
+.homelengo-box.list-style-1 .content-top {
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
-.Luopian's Homes-box.list-style-1 .archive-bottom {
+.homelengo-box.list-style-1 .archive-bottom {
   flex-grow: 1;
   background-color: #ffffff;
 }
-.Luopian's Homes-box.list-style-1 .archive-bottom .location {
+.homelengo-box.list-style-1 .archive-bottom .location {
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -5463,7 +5463,7 @@ label {
   margin-top: 20px;
 }
 
-.flat-recommended .Luopian's Homes-box {
+.flat-recommended .homelengo-box {
   margin-bottom: 30px;
 }
 .flat-recommended .tf-btn {
@@ -6127,7 +6127,7 @@ label {
 .wrap-property .box-right {
   flex-grow: 1;
 }
-.wrap-property .box-right .Luopian's Homes-box:not(:last-child) {
+.wrap-property .box-right .homelengo-box:not(:last-child) {
   margin-bottom: 30px;
 }
 
@@ -6327,7 +6327,7 @@ label {
   fill: #1563df;
 }
 
-.Luopian's Homes-categories {
+.homelengo-categories {
   padding: 30px 24px 24px 24px;
   background-color: #ffffff;
   border-radius: 16px;
@@ -6344,10 +6344,10 @@ label {
   z-index: 1;
   border: 1px solid #e4e4e4;
 }
-.Luopian's Homes-categories .icon-box {
+.homelengo-categories .icon-box {
   overflow: hidden;
 }
-.Luopian's Homes-categories .icon-box .icon {
+.homelengo-categories .icon-box .icon {
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   -ms-transition: all 0.4s ease;
@@ -6356,50 +6356,50 @@ label {
   font-size: 80px;
   color: #5c6368;
 }
-.Luopian's Homes-categories .icon-box svg path {
+.homelengo-categories .icon-box svg path {
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   -ms-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-.Luopian's Homes-categories .content h6,
-.Luopian's Homes-categories .content p {
+.homelengo-categories .content h6,
+.homelengo-categories .content p {
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   -ms-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-.Luopian's Homes-categories.active .icon-box .icon, .Luopian's Homes-categories:hover .icon-box .icon {
+.homelengo-categories.active .icon-box .icon, .homelengo-categories:hover .icon-box .icon {
   color: #1563df;
 }
-.Luopian's Homes-categories.active .icon-box svg path, .Luopian's Homes-categories:hover .icon-box svg path {
+.homelengo-categories.active .icon-box svg path, .homelengo-categories:hover .icon-box svg path {
   fill: #1563df;
 }
-.Luopian's Homes-categories.style-02 {
+.homelengo-categories.style-02 {
   border-color: transparent;
   overflow: hidden;
 }
-.Luopian's Homes-categories.style-02.active, .Luopian's Homes-categories.style-02:hover {
+.homelengo-categories.style-02.active, .homelengo-categories.style-02:hover {
   box-shadow: none;
 }
-.Luopian's Homes-categories.style-02.active .icon-box .icon, .Luopian's Homes-categories.style-02:hover .icon-box .icon {
+.homelengo-categories.style-02.active .icon-box .icon, .homelengo-categories.style-02:hover .icon-box .icon {
   color: #ffffff;
 }
-.Luopian's Homes-categories.style-02.active .icon-box svg path, .Luopian's Homes-categories.style-02:hover .icon-box svg path {
+.homelengo-categories.style-02.active .icon-box svg path, .homelengo-categories.style-02:hover .icon-box svg path {
   fill: #ffffff;
 }
-.Luopian's Homes-categories.style-02.active .content h6,
-.Luopian's Homes-categories.style-02.active .content p, .Luopian's Homes-categories.style-02:hover .content h6,
-.Luopian's Homes-categories.style-02:hover .content p {
+.homelengo-categories.style-02.active .content h6,
+.homelengo-categories.style-02.active .content p, .homelengo-categories.style-02:hover .content h6,
+.homelengo-categories.style-02:hover .content p {
   color: #ffffff;
 }
-.Luopian's Homes-categories.style-02.active::before, .Luopian's Homes-categories.style-02:hover::before {
+.homelengo-categories.style-02.active::before, .homelengo-categories.style-02:hover::before {
   transform: scale(1, 1);
   transform-origin: top center;
 }
-.Luopian's Homes-categories.style-02::before {
+.homelengo-categories.style-02::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -6430,7 +6430,7 @@ label {
   position: relative;
 }
 
-.Luopian's Homes-categories-v2 {
+.homelengo-categories-v2 {
   width: 125px;
   height: 116px;
   display: flex;
@@ -6447,14 +6447,14 @@ label {
   position: relative;
   border-radius: 16px;
 }
-.Luopian's Homes-categories-v2 .icon-box path {
+.homelengo-categories-v2 .icon-box path {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.Luopian's Homes-categories-v2 .content {
+.homelengo-categories-v2 .content {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
@@ -6462,14 +6462,14 @@ label {
   transition: all 0.5s ease;
   color: #5c6368;
 }
-.Luopian's Homes-categories-v2.active, .Luopian's Homes-categories-v2:hover {
+.homelengo-categories-v2.active, .homelengo-categories-v2:hover {
   border-color: #1563df;
   background-color: #1563df;
 }
-.Luopian's Homes-categories-v2.active .icon-box svg path, .Luopian's Homes-categories-v2:hover .icon-box svg path {
+.homelengo-categories-v2.active .icon-box svg path, .homelengo-categories-v2:hover .icon-box svg path {
   fill: #ffffff;
 }
-.Luopian's Homes-categories-v2.active .content, .Luopian's Homes-categories-v2:hover .content {
+.homelengo-categories-v2.active .content, .homelengo-categories-v2:hover .content {
   color: #ffffff;
 }
 
@@ -6837,7 +6837,7 @@ label {
   left: 0;
   top: 0;
 }
-.wrapper-layout .Luopian's Homes-box {
+.wrapper-layout .homelengo-box {
   margin-bottom: 30px;
 }
 .wrapper-layout.layout-2 .wrap-left {
@@ -6916,7 +6916,7 @@ label {
   left: 0;
   top: 0;
 }
-.wrapper-layout-3 .Luopian's Homes-box {
+.wrapper-layout-3 .homelengo-box {
   margin-bottom: 30px;
 }
 
@@ -9411,10 +9411,10 @@ tr {
     column-gap: 15px;
   }
 
-  .Luopian's Homes-box.list-style-2 .archive-top {
+  .homelengo-box.list-style-2 .archive-top {
     width: 40%;
   }
-  .Luopian's Homes-box.list-style-2 .archive-bottom {
+  .homelengo-box.list-style-2 .archive-bottom {
     width: 60%;
   }
 
@@ -9721,7 +9721,7 @@ tr {
     top: 0;
   }
 
-  .Luopian's Homes-categories.active, .Luopian's Homes-categories:hover {
+  .homelengo-categories.active, .homelengo-categories:hover {
     box-shadow: 0px 30px 60px 0px rgba(0, 0, 0, 0.1019607843);
     border-color: transparent;
   }
@@ -9775,10 +9775,10 @@ tr {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .Luopian's Homes-box.list-style-2 .archive-top {
+  .homelengo-box.list-style-2 .archive-top {
     width: 33.5%;
   }
-  .Luopian's Homes-box.list-style-2 .archive-bottom {
+  .homelengo-box.list-style-2 .archive-bottom {
     width: 66.5%;
   }
 
@@ -10224,7 +10224,7 @@ tr {
     grid-template-columns: 1fr 1fr;
   }
 
-  .Luopian's Homes-box.style-3 .images-group .images-style {
+  .homelengo-box.style-3 .images-group .images-style {
     height: 100%;
   }
 
@@ -11202,26 +11202,26 @@ tr {
     left: 15px;
   }
 
-  .Luopian's Homes-box.list-style-1 {
+  .homelengo-box.list-style-1 {
     display: block;
   }
-  .Luopian's Homes-box.lg .archive-top h5 {
+  .homelengo-box.lg .archive-top h5 {
     font-size: 24px;
     line-height: 30px;
   }
-  .Luopian's Homes-box.lg .archive-top .content {
+  .homelengo-box.lg .archive-top .content {
     padding-left: 20px;
     padding-right: 20px;
   }
-  .Luopian's Homes-box.lg .archive-top .content .note {
+  .homelengo-box.lg .archive-top .content .note {
     font-size: 16px;
     line-height: 26px;
   }
-  .Luopian's Homes-box.lg .archive-top .content .desc p {
+  .homelengo-box.lg .archive-top .content .desc p {
     font-size: 16px;
     line-height: 26px;
   }
-  .Luopian's Homes-box.lg .archive-top .content .meta-list {
+  .homelengo-box.lg .archive-top .content .meta-list {
     column-gap: 20px;
   }
 
@@ -11356,7 +11356,7 @@ tr {
     flex-wrap: wrap;
   }
 
-  .Luopian's Homes-box.list-style-1 .archive-top {
+  .homelengo-box.list-style-1 .archive-top {
     width: 100%;
   }
 }
@@ -11435,7 +11435,7 @@ tr {
 .rtl .flat-blog-item,
 .rtl .box-agent,
 .rtl .box-tes-item,
-.rtl .Luopian's Homes-box,
+.rtl .homelengo-box,
 .rtl .tf-btn {
   direction: rtl;
 }

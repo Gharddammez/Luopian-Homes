@@ -40,8 +40,8 @@
         locationData(
           "images/banner/contact.jpg",
           "Mombasa, Kenya",
-          "+254 791 599 991",
-          "onyangom383@gmail.com "
+          "1-333-345-6868",
+          "themesflat@gmail.com"
         ),
         40.709327,
         -74.004815,

@@ -454,724 +454,753 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade active show" role="tabpanel">
                                             <div class="form-sl">
-    <form method="post" class="luxury-bnb-form">
-        <style>
-            /* ============================================
+                                                <form method="post" class="luxury-bnb-form">
+                                                    <style>
+                                                        /* ============================================
                LUXURY BNB SEARCH FORM - COMPLETE REDESIGN
                Fully Responsive | Glassmorphism | Interactive
             ============================================ */
-            
-            .luxury-bnb-form {
-                width: 100%;
-                max-width: 1300px;
-                margin: 0 auto;
-                font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            }
-            
-            /* Main Glass Container */
-            .luxury-bnb-form .glass-container {
-                background: rgba(0, 0, 0, 0.4);
-                backdrop-filter: blur(20px);
-                border-radius: 60px;
-                padding: 20px 28px;
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
-                transition: all 0.4s ease;
-            }
-            
-            .luxury-bnb-form .glass-container:hover {
-                background: rgba(0, 0, 0, 0.5);
-                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            }
-            
-            /* Row Layout - Responsive Grid */
-            .luxury-bnb-form .form-row {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 12px;
-                margin-bottom: 15px;
-            }
-            
-            .luxury-bnb-form .form-row:last-child {
-                margin-bottom: 0;
-            }
-            
-            /* Form Fields - Uniform Size */
-            .luxury-bnb-form .field {
-                flex: 1;
-                min-width: 140px;
-                position: relative;
-            }
-            
-            .luxury-bnb-form .field label {
-                display: block;
-                font-size: 10px;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 1.5px;
-                margin-bottom: 6px;
-                color: rgba(255, 255, 255, 0.7);
-            }
-            
-            .luxury-bnb-form .field input,
-            .luxury-bnb-form .field .custom-select {
-                width: 100%;
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 40px;
-                padding: 12px 18px;
-                font-size: 14px;
-                color: white;
-                transition: all 0.3s;
-                cursor: pointer;
-            }
-            
-            .luxury-bnb-form .field input:focus {
-                outline: none;
-                border-color: rgba(255, 255, 255, 0.5);
-                background: rgba(255, 255, 255, 0.2);
-            }
-            
-            .luxury-bnb-form .field input::placeholder {
-                color: rgba(255, 255, 255, 0.5);
-            }
-            
-            /* Date Input */
-            .luxury-bnb-form input[type="date"] {
-                color-scheme: dark;
-                cursor: pointer;
-            }
-            
-            .luxury-bnb-form input[type="date"]::-webkit-calendar-picker-indicator {
-                filter: invert(1);
-                opacity: 0.7;
-                cursor: pointer;
-            }
-            
-            /* Custom Select Dropdown */
-            .luxury-bnb-form .custom-select {
-                position: relative;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            
-            .luxury-bnb-form .custom-select .selected {
-                flex: 1;
-            }
-            
-            .luxury-bnb-form .custom-select .arrow {
-                transition: transform 0.3s;
-            }
-            
-            .luxury-bnb-form .custom-select .dropdown {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.95);
-                backdrop-filter: blur(15px);
-                border-radius: 20px;
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                margin-top: 8px;
-                padding: 8px 0;
-                z-index: 100;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.25s;
-            }
-            
-            .luxury-bnb-form .custom-select .dropdown.open {
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .luxury-bnb-form .custom-select .option {
-                padding: 10px 18px;
-                cursor: pointer;
-                transition: all 0.2s;
-                font-size: 14px;
-            }
-            
-            .luxury-bnb-form .custom-select .option:hover {
-                background: rgba(255, 255, 255, 0.15);
-                transform: translateX(5px);
-            }
-            
-            /* Button Row */
-            .luxury-bnb-form .button-row {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 15px;
-                margin-top: 10px;
-                flex-wrap: wrap;
-            }
-            
-            /* Advanced Toggle Button */
-            .luxury-bnb-form .toggle-advanced {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                background: rgba(255, 255, 255, 0.08);
-                padding: 10px 22px;
-                border-radius: 40px;
-                cursor: pointer;
-                transition: all 0.3s;
-                color: white;
-                font-size: 13px;
-                font-weight: 500;
-                border: none;
-            }
-            
-            .luxury-bnb-form .toggle-advanced:hover {
-                background: rgba(255, 255, 255, 0.2);
-                gap: 12px;
-            }
-            
-            .luxury-bnb-form .toggle-advanced svg {
-                transition: transform 0.3s;
-            }
-            
-            /* Search Button */
-            .luxury-bnb-form .search-btn {
-                background: linear-gradient(135deg, #ff6b6b, #cc5de8);
-                border: none;
-                border-radius: 40px;
-                padding: 10px 32px;
-                font-size: 14px;
-                font-weight: 600;
-                color: white;
-                cursor: pointer;
-                transition: all 0.3s;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-            
-            .luxury-bnb-form .search-btn:hover {
-                transform: scale(1.02);
-                box-shadow: 0 8px 20px rgba(204, 93, 232, 0.3);
-                gap: 12px;
-            }
-            
-            /* ========== ADVANCED SECTION ========== */
-            .luxury-bnb-form .advanced-section {
-                display: none;
-                margin-top: 25px;
-                padding-top: 20px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                animation: slideDown 0.4s ease;
-            }
-            
-            .luxury-bnb-form .advanced-section.active {
-                display: block;
-            }
-            
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            /* 2-Column Grid for Advanced Options */
-            .luxury-bnb-form .grid-2 {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                margin-bottom: 20px;
-            }
-            
-            /* Price Widget */
-            .luxury-bnb-form .price-widget {
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 28px;
-                padding: 18px 20px;
-            }
-            
-            .luxury-bnb-form .price-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 15px;
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-            
-            .luxury-bnb-form .price-header span {
-                font-size: 13px;
-                font-weight: 600;
-                color: white;
-            }
-            
-            .luxury-bnb-form .price-values {
-                color: rgba(255, 255, 255, 0.7);
-                font-size: 13px;
-            }
-            
-            /* Slider */
-            .luxury-bnb-form .ui-slider {
-                background: rgba(255, 255, 255, 0.2);
-                border: none;
-                height: 4px;
-                border-radius: 4px;
-                margin: 20px 0;
-            }
-            
-            .luxury-bnb-form .ui-slider .ui-slider-handle {
-                background: linear-gradient(135deg, #ff6b6b, #cc5de8);
-                border: none;
-                border-radius: 50%;
-                width: 18px;
-                height: 18px;
-                top: -7px;
-                cursor: pointer;
-            }
-            
-            .luxury-bnb-form .ui-slider .ui-slider-range {
-                background: linear-gradient(90deg, #ff6b6b, #cc5de8);
-            }
-            
-            /* Request Cards Grid */
-            .luxury-bnb-form .cards-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-                gap: 12px;
-                margin: 15px 0 20px;
-            }
-            
-            .luxury-bnb-form .request-card {
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 20px;
-                padding: 14px 18px;
-                cursor: pointer;
-                transition: all 0.25s;
-                border: 1px solid rgba(255, 255, 255, 0.08);
-            }
-            
-            .luxury-bnb-form .request-card:hover {
-                background: rgba(255, 255, 255, 0.12);
-                transform: translateX(4px);
-            }
-            
-            .luxury-bnb-form .request-card.selected {
-                background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(204, 93, 232, 0.2));
-                border-color: rgba(255, 107, 107, 0.4);
-            }
-            
-            .luxury-bnb-form .card-emoji {
-                font-size: 24px;
-                margin-right: 10px;
-                display: inline-block;
-            }
-            
-            .luxury-bnb-form .card-title {
-                font-weight: 600;
-                font-size: 14px;
-                color: white;
-            }
-            
-            .luxury-bnb-form .card-desc {
-                font-size: 10px;
-                color: rgba(255, 255, 255, 0.5);
-                margin-top: 5px;
-            }
-            
-            .luxury-bnb-form .section-title {
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: 1.5px;
-                text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.7);
-                margin: 20px 0 12px 0;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-            
-            /* ========== RESPONSIVE BREAKPOINTS ========== */
-            
-            /* Tablet */
-            @media (max-width: 900px) {
-                .luxury-bnb-form .glass-container {
-                    padding: 18px 22px;
-                    border-radius: 45px;
-                }
-                
-                .luxury-bnb-form .grid-2 {
-                    grid-template-columns: 1fr;
-                    gap: 15px;
-                }
-                
-                .luxury-bnb-form .cards-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
-            
-            /* Mobile */
-            @media (max-width: 700px) {
-                .luxury-bnb-form .glass-container {
-                    padding: 16px 18px;
-                    border-radius: 35px;
-                }
-                
-                .luxury-bnb-form .form-row {
-                    flex-direction: column;
-                    gap: 12px;
-                }
-                
-                .luxury-bnb-form .field {
-                    width: 100%;
-                    min-width: 100%;
-                }
-                
-                .luxury-bnb-form .field input,
-                .luxury-bnb-form .field .custom-select {
-                    padding: 10px 16px;
-                    font-size: 13px;
-                }
-                
-                .luxury-bnb-form .button-row {
-                    flex-direction: column;
-                }
-                
-                .luxury-bnb-form .toggle-advanced {
-                    justify-content: center;
-                    width: 100%;
-                }
-                
-                .luxury-bnb-form .search-btn {
-                    justify-content: center;
-                    width: 100%;
-                }
-                
-                .luxury-bnb-form .cards-grid {
-                    grid-template-columns: 1fr;
-                    gap: 10px;
-                }
-                
-                .luxury-bnb-form .price-widget {
-                    padding: 14px 16px;
-                }
-            }
-            
-            /* Small Mobile */
-            @media (max-width: 480px) {
-                .luxury-bnb-form .glass-container {
-                    padding: 14px;
-                    border-radius: 30px;
-                }
-                
-                .luxury-bnb-form .field label {
-                    font-size: 9px;
-                }
-                
-                .luxury-bnb-form .field input,
-                .luxury-bnb-form .field .custom-select {
-                    padding: 8px 14px;
-                    font-size: 12px;
-                }
-                
-                .luxury-bnb-form .request-card {
-                    padding: 10px 14px;
-                }
-                
-                .luxury-bnb-form .card-emoji {
-                    font-size: 20px;
-                }
-                
-                .luxury-bnb-form .card-title {
-                    font-size: 13px;
-                }
-            }
-            
-            /* Animation */
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            .luxury-bnb-form {
-                animation: fadeInUp 0.6s ease-out;
-            }
-        </style>
-        
-        <!-- MAIN GLASS CONTAINER -->
-        <div class="glass-container">
-            <!-- ROW 1: Dates & Guests -->
-            <div class="form-row">
-                <div class="field">
-                    <label><i class="fas fa-calendar-alt"></i> CHECK-IN</label>
-                    <input type="date" name="checkin" required>
-                </div>
-                <div class="field">
-                    <label><i class="fas fa-calendar-check"></i> CHECK-OUT</label>
-                    <input type="date" name="checkout" required>
-                </div>
-                <div class="field">
-                    <label><i class="fas fa-user-friends"></i> GUESTS</label>
-                    <div class="custom-select" data-type="guests">
-                        <span class="selected">2 guests</span>
-                        <span class="arrow">▼</span>
-                        <div class="dropdown">
-                            <div class="option">1 guest</div>
-                            <div class="option">2 guests</div>
-                            <div class="option">3 guests</div>
-                            <div class="option">4 guests</div>
-                            <div class="option">5+ guests</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ROW 2: Location, Occasion, Vibe -->
-            <div class="form-row">
-                <div class="field">
-                    <label><i class="fas fa-map-pin"></i> DESTINATION</label>
-                    <input type="text" placeholder="Anywhere" name="location">
-                </div>
-                <div class="field">
-                    <label><i class="fas fa-moon"></i> OCCASION</label>
-                    <input type="text" placeholder="Honeymoon • Birthday • Anniversary" name="occasion">
-                </div>
-                <div class="field">
-                    <label><i class="fas fa-crown"></i> VIBE</label>
-                    <div class="custom-select" data-type="vibe">
-                        <span class="selected">Any vibe</span>
-                        <span class="arrow">▼</span>
-                        <div class="dropdown">
-                            <div class="option">Any vibe</div>
-                            <div class="option">🔥 Romantic</div>
-                            <div class="option">🎉 Party</div>
-                            <div class="option">💼 Work</div>
-                            <div class="option">🧘 Wellness</div>
-                            <div class="option">🏔️ Adventure</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ROW 3: Buttons -->
-            <div class="button-row">
-                <button type="button" class="toggle-advanced">
-                    <i class="fas fa-gem"></i> <span>Unique requests</span>
-                    <svg width="14" height="14" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.5 12.375V3.4375M5.5 12.375C5.86467 12.375 6.21441 12.5199 6.47227 12.7777C6.73013 13.0356 6.875 13.3853 6.875 13.75C6.875 14.1147 6.73013 14.4644 6.47227 14.7223C6.21441 14.9801 5.86467 15.125 5.5 15.125M5.5 12.375C5.13533 12.375 4.78559 12.5199 4.52773 12.7777C4.26987 13.0356 4.125 13.3853 4.125 13.75C4.125 14.1147 4.26987 14.4644 4.52773 14.7223C4.78559 14.9801 5.13533 15.125 5.5 15.125M5.5 15.125V18.5625M16.5 12.375V3.4375M16.5 12.375C16.8647 12.375 17.2144 12.5199 17.4723 12.7777C17.7301 13.0356 17.875 13.3853 17.875 13.75C17.875 14.1147 17.7301 14.4644 17.4723 14.7223C17.2144 14.9801 16.8647 15.125 16.5 15.125M16.5 12.375C16.1353 12.375 15.7856 12.5199 15.5277 12.7777C15.2699 13.0356 15.125 13.3853 15.125 13.75C15.125 14.1147 15.2699 14.4644 15.5277 14.7223C15.7856 14.9801 16.1353 15.125 16.5 15.125M16.5 15.125V18.5625M11 6.875V3.4375M11 6.875C11.3647 6.875 11.7144 7.01987 11.9723 7.27773C12.2301 7.53559 12.375 7.88533 12.375 8.25C12.375 8.61467 12.2301 8.96441 11.9723 9.22227C11.7144 9.48013 11.3647 9.625 11 9.625M11 6.875C10.6353 6.875 10.2856 7.01987 10.0277 7.27773C9.76987 7.53559 9.625 7.88533 9.625 8.25C9.625 8.61467 9.76987 8.96441 10.0277 9.22227C10.2856 9.48013 10.6353 9.625 11 9.625M11 9.625V18.5625" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i> Find stay
-                </button>
-            </div>
-            
-            <!-- ========== ADVANCED SECTION (Hidden until clicked) ========== -->
-            <div class="advanced-section">
-                <!-- Price & Bedrooms -->
-                <div class="grid-2">
-                    <div class="price-widget">
-                        <div class="price-header">
-                            <span><i class="fas fa-tag"></i> Nightly budget</span>
-                            <span class="price-values">$<span id="minPrice">0</span> - $<span id="maxPrice">1000</span></span>
-                        </div>
-                        <div id="priceSlider"></div>
-                        <input type="hidden" name="min-price">
-                        <input type="hidden" name="max-price">
-                    </div>
-                    <div class="price-widget">
-                        <div class="price-header">
-                            <span><i class="fas fa-bed"></i> Bedrooms</span>
-                        </div>
-                        <div class="custom-select" data-type="bedrooms" style="margin-top: 5px;">
-                            <span class="selected">Any</span>
-                            <span class="arrow">▼</span>
-                            <div class="dropdown">
-                                <div class="option">Any</div>
-                                <div class="option">1 bedroom</div>
-                                <div class="option">2 bedrooms</div>
-                                <div class="option">3 bedrooms</div>
-                                <div class="option">4+ bedrooms</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Host Interaction -->
-                <div class="section-title">
-                    <i class="fas fa-handshake"></i> Host interaction
-                </div>
-                <div class="cards-grid">
-                    <div class="request-card" data-value="zero-contact">
-                        <span class="card-emoji">🤖</span>
-                        <span class="card-title">Zero-contact check-in</span>
-                        <div class="card-desc">Smart lock, no human interaction</div>
-                    </div>
-                    <div class="request-card" data-value="local-tips">
-                        <span class="card-emoji">🏠</span>
-                        <span class="card-title">Local host tips</span>
-                        <div class="card-desc">Hidden gems & local secrets</div>
-                    </div>
-                    <div class="request-card" data-value="meet-greet">
-                        <span class="card-emoji">🤝</span>
-                        <span class="card-title">Personal meet & greet</span>
-                        <div class="card-desc">Host welcomes you personally</div>
-                    </div>
-                    <div class="request-card" data-value="privacy">
-                        <span class="card-emoji">🔇</span>
-                        <span class="card-title">Absolute privacy</span>
-                        <div class="card-desc">Completely secluded</div>
-                    </div>
-                </div>
-                
-                <!-- Special Arrangements -->
-                <div class="section-title">
-                    <i class="fas fa-gift"></i> Special arrangements
-                </div>
-                <div class="cards-grid">
-                    <div class="request-card" data-value="surprise">
-                        <span class="card-emoji">🎁</span>
-                        <span class="card-title">Surprise setup</span>
-                        <div class="card-desc">Flowers, balloons, decorations</div>
-                    </div>
-                    <div class="request-card" data-value="chef">
-                        <span class="card-emoji">👨‍🍳</span>
-                        <span class="card-title">Private chef</span>
-                        <div class="card-desc">In-stay chef for special dinner</div>
-                    </div>
-                    <div class="request-card" data-value="photographer">
-                        <span class="card-emoji">📸</span>
-                        <span class="card-title">Local photographer</span>
-                        <div class="card-desc">Professional photos during stay</div>
-                    </div>
-                    <div class="request-card" data-value="massage">
-                        <span class="card-emoji">💆</span>
-                        <span class="card-title">In-room massage</span>
-                        <div class="card-desc">Spa therapist visits property</div>
-                    </div>
-                </div>
-                
-                <!-- Property Features -->
-                <div class="section-title">
-                    <i class="fas fa-star-of-life"></i> Property features
-                </div>
-                <div class="cards-grid">
-                    <div class="request-card" data-value="sauna">
-                        <span class="card-emoji">🧖</span>
-                        <span class="card-title">Private sauna</span>
-                        <div class="card-desc">In-unit sauna access</div>
-                    </div>
-                    <div class="request-card" data-value="rooftop">
-                        <span class="card-emoji">🌆</span>
-                        <span class="card-title">Rooftop terrace</span>
-                        <div class="card-desc">Private outdoor city views</div>
-                    </div>
-                    <div class="request-card" data-value="firepit">
-                        <span class="card-emoji">🔥</span>
-                        <span class="card-title">Fire pit</span>
-                        <div class="card-desc">Evening s'mores & stories</div>
-                    </div>
-                    <div class="request-card" data-value="cold-plunge">
-                        <span class="card-emoji">❄️</span>
-                        <span class="card-title">Cold plunge</span>
-                        <div class="card-desc">Recovery & wellness</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Toggle Advanced Section
-    const toggleBtn = document.querySelector('.toggle-advanced');
-    const advancedSection = document.querySelector('.advanced-section');
-    let isOpen = false;
-    
-    if (toggleBtn && advancedSection) {
-        toggleBtn.addEventListener('click', function() {
-            isOpen = !isOpen;
-            advancedSection.classList.toggle('active', isOpen);
-            const svg = this.querySelector('svg');
-            if (svg) {
-                svg.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-            }
-        });
-    }
-    
-    // Price Slider
-    if (typeof $ !== 'undefined' && $('#priceSlider').length) {
-        $('#priceSlider').slider({
-            range: true,
-            min: 0,
-            max: 2000,
-            values: [0, 1000],
-            slide: function(event, ui) {
-                $('#minPrice').text(ui.values[0]);
-                $('#maxPrice').text(ui.values[1]);
-                $('input[name="min-price"]').val(ui.values[0]);
-                $('input[name="max-price"]').val(ui.values[1]);
-            }
-        });
-    }
-    
-    // Custom Select Dropdowns
-    document.querySelectorAll('.custom-select').forEach(select => {
-        const selected = select.querySelector('.selected');
-        const dropdown = select.querySelector('.dropdown');
-        const options = select.querySelectorAll('.option');
-        
-        if (selected && dropdown) {
-            selected.addEventListener('click', (e) => {
-                e.stopPropagation();
-                document.querySelectorAll('.custom-select .dropdown').forEach(d => {
-                    if (d !== dropdown) d.classList.remove('open');
-                });
-                dropdown.classList.toggle('open');
-            });
-        }
-        
-        options.forEach(opt => {
-            opt.addEventListener('click', () => {
-                if (selected) selected.textContent = opt.textContent;
-                dropdown.classList.remove('open');
-            });
-        });
-    });
-    
-    // Request Card Selection
-    document.querySelectorAll('.request-card').forEach(card => {
-        card.addEventListener('click', function() {
-            this.classList.toggle('selected');
-        });
-    });
-    
-    // Close dropdowns on outside click
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.custom-select .dropdown').forEach(d => {
-            d.classList.remove('open');
-        });
-    });
-    
-    // Prevent dropdown close when clicking inside
-    document.querySelectorAll('.custom-select .dropdown').forEach(d => {
-        d.addEventListener('click', (e) => e.stopPropagation());
-    });
-});
-</script>
+                                                        .luxury-bnb-form {
+                                                            width: 100%;
+                                                            max-width: 1300px;
+                                                            margin: 0 auto;
+                                                            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+                                                        }
+
+                                                        /* Main Glass Container */
+                                                        .luxury-bnb-form .glass-container {
+                                                            background: rgba(0, 0, 0, 0.4);
+                                                            backdrop-filter: blur(20px);
+                                                            border-radius: 60px;
+                                                            padding: 20px 28px;
+                                                            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+                                                            transition: all 0.4s ease;
+                                                        }
+
+                                                        .luxury-bnb-form .glass-container:hover {
+                                                            background: rgba(0, 0, 0, 0.5);
+                                                            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+                                                        }
+
+                                                        /* Row Layout - Responsive Grid */
+                                                        .luxury-bnb-form .form-row {
+                                                            display: flex;
+                                                            flex-wrap: wrap;
+                                                            gap: 12px;
+                                                            margin-bottom: 15px;
+                                                        }
+
+                                                        .luxury-bnb-form .form-row:last-child {
+                                                            margin-bottom: 0;
+                                                        }
+
+                                                        /* Form Fields - Uniform Size */
+                                                        .luxury-bnb-form .field {
+                                                            flex: 1;
+                                                            min-width: 140px;
+                                                            position: relative;
+                                                        }
+
+                                                        .luxury-bnb-form .field label {
+                                                            display: block;
+                                                            font-size: 10px;
+                                                            font-weight: 600;
+                                                            text-transform: uppercase;
+                                                            letter-spacing: 1.5px;
+                                                            margin-bottom: 6px;
+                                                            color: rgba(255, 255, 255, 0.7);
+                                                        }
+
+                                                        .luxury-bnb-form .field input,
+                                                        .luxury-bnb-form .field .custom-select {
+                                                            width: 100%;
+                                                            background: rgba(255, 255, 255, 0.1);
+                                                            border: 1px solid rgba(255, 255, 255, 0.15);
+                                                            border-radius: 40px;
+                                                            padding: 12px 18px;
+                                                            font-size: 14px;
+                                                            color: white;
+                                                            transition: all 0.3s;
+                                                            cursor: pointer;
+                                                        }
+
+                                                        .luxury-bnb-form .field input:focus {
+                                                            outline: none;
+                                                            border-color: rgba(255, 255, 255, 0.5);
+                                                            background: rgba(255, 255, 255, 0.2);
+                                                        }
+
+                                                        .luxury-bnb-form .field input::placeholder {
+                                                            color: rgba(255, 255, 255, 0.5);
+                                                        }
+
+                                                        /* Date Input */
+                                                        .luxury-bnb-form input[type="date"] {
+                                                            color-scheme: dark;
+                                                            cursor: pointer;
+                                                        }
+
+                                                        .luxury-bnb-form input[type="date"]::-webkit-calendar-picker-indicator {
+                                                            filter: invert(1);
+                                                            opacity: 0.7;
+                                                            cursor: pointer;
+                                                        }
+
+                                                        /* Custom Select Dropdown */
+                                                        .luxury-bnb-form .custom-select {
+                                                            position: relative;
+                                                            display: flex;
+                                                            justify-content: space-between;
+                                                            align-items: center;
+                                                        }
+
+                                                        .luxury-bnb-form .custom-select .selected {
+                                                            flex: 1;
+                                                        }
+
+                                                        .luxury-bnb-form .custom-select .arrow {
+                                                            transition: transform 0.3s;
+                                                        }
+
+                                                        .luxury-bnb-form .custom-select .dropdown {
+                                                            position: absolute;
+                                                            top: 100%;
+                                                            left: 0;
+                                                            right: 0;
+                                                            background: rgba(0, 0, 0, 0.95);
+                                                            backdrop-filter: blur(15px);
+                                                            border-radius: 20px;
+                                                            border: 1px solid rgba(255, 255, 255, 0.15);
+                                                            margin-top: 8px;
+                                                            padding: 8px 0;
+                                                            z-index: 100;
+                                                            opacity: 0;
+                                                            visibility: hidden;
+                                                            transition: all 0.25s;
+                                                        }
+
+                                                        .luxury-bnb-form .custom-select .dropdown.open {
+                                                            opacity: 1;
+                                                            visibility: visible;
+                                                        }
+
+                                                        .luxury-bnb-form .custom-select .option {
+                                                            padding: 10px 18px;
+                                                            cursor: pointer;
+                                                            transition: all 0.2s;
+                                                            font-size: 14px;
+                                                        }
+
+                                                        .luxury-bnb-form .custom-select .option:hover {
+                                                            background: rgba(255, 255, 255, 0.15);
+                                                            transform: translateX(5px);
+                                                        }
+
+                                                        /* Button Row */
+                                                        .luxury-bnb-form .button-row {
+                                                            display: flex;
+                                                            justify-content: space-between;
+                                                            align-items: center;
+                                                            gap: 15px;
+                                                            margin-top: 10px;
+                                                            flex-wrap: wrap;
+                                                        }
+
+                                                        /* Advanced Toggle Button */
+                                                        .luxury-bnb-form .toggle-advanced {
+                                                            display: flex;
+                                                            align-items: center;
+                                                            gap: 8px;
+                                                            background: rgba(255, 255, 255, 0.08);
+                                                            padding: 10px 22px;
+                                                            border-radius: 40px;
+                                                            cursor: pointer;
+                                                            transition: all 0.3s;
+                                                            color: white;
+                                                            font-size: 13px;
+                                                            font-weight: 500;
+                                                            border: none;
+                                                        }
+
+                                                        .luxury-bnb-form .toggle-advanced:hover {
+                                                            background: rgba(255, 255, 255, 0.2);
+                                                            gap: 12px;
+                                                        }
+
+                                                        .luxury-bnb-form .toggle-advanced svg {
+                                                            transition: transform 0.3s;
+                                                        }
+
+                                                        /* Search Button */
+                                                        .luxury-bnb-form .search-btn {
+                                                            background: linear-gradient(135deg, #ff6b6b, #cc5de8);
+                                                            border: none;
+                                                            border-radius: 40px;
+                                                            padding: 10px 32px;
+                                                            font-size: 14px;
+                                                            font-weight: 600;
+                                                            color: white;
+                                                            cursor: pointer;
+                                                            transition: all 0.3s;
+                                                            display: flex;
+                                                            align-items: center;
+                                                            gap: 8px;
+                                                        }
+
+                                                        .luxury-bnb-form .search-btn:hover {
+                                                            transform: scale(1.02);
+                                                            box-shadow: 0 8px 20px rgba(204, 93, 232, 0.3);
+                                                            gap: 12px;
+                                                        }
+
+                                                        /* ========== ADVANCED SECTION ========== */
+                                                        .luxury-bnb-form .advanced-section {
+                                                            display: none;
+                                                            margin-top: 25px;
+                                                            padding-top: 20px;
+                                                            border-top: 1px solid rgba(255, 255, 255, 0.1);
+                                                            animation: slideDown 0.4s ease;
+                                                        }
+
+                                                        .luxury-bnb-form .advanced-section.active {
+                                                            display: block;
+                                                        }
+
+                                                        @keyframes slideDown {
+                                                            from {
+                                                                opacity: 0;
+                                                                transform: translateY(-10px);
+                                                            }
+
+                                                            to {
+                                                                opacity: 1;
+                                                                transform: translateY(0);
+                                                            }
+                                                        }
+
+                                                        /* 2-Column Grid for Advanced Options */
+                                                        .luxury-bnb-form .grid-2 {
+                                                            display: grid;
+                                                            grid-template-columns: repeat(2, 1fr);
+                                                            gap: 20px;
+                                                            margin-bottom: 20px;
+                                                        }
+
+                                                        /* Price Widget */
+                                                        .luxury-bnb-form .price-widget {
+                                                            background: rgba(255, 255, 255, 0.05);
+                                                            border-radius: 28px;
+                                                            padding: 18px 20px;
+                                                        }
+
+                                                        .luxury-bnb-form .price-header {
+                                                            display: flex;
+                                                            justify-content: space-between;
+                                                            align-items: center;
+                                                            margin-bottom: 15px;
+                                                            flex-wrap: wrap;
+                                                            gap: 8px;
+                                                        }
+
+                                                        .luxury-bnb-form .price-header span {
+                                                            font-size: 13px;
+                                                            font-weight: 600;
+                                                            color: white;
+                                                        }
+
+                                                        .luxury-bnb-form .price-values {
+                                                            color: rgba(255, 255, 255, 0.7);
+                                                            font-size: 13px;
+                                                        }
+
+                                                        /* Slider */
+                                                        .luxury-bnb-form .ui-slider {
+                                                            background: rgba(255, 255, 255, 0.2);
+                                                            border: none;
+                                                            height: 4px;
+                                                            border-radius: 4px;
+                                                            margin: 20px 0;
+                                                        }
+
+                                                        .luxury-bnb-form .ui-slider .ui-slider-handle {
+                                                            background: linear-gradient(135deg, #ff6b6b, #cc5de8);
+                                                            border: none;
+                                                            border-radius: 50%;
+                                                            width: 18px;
+                                                            height: 18px;
+                                                            top: -7px;
+                                                            cursor: pointer;
+                                                        }
+
+                                                        .luxury-bnb-form .ui-slider .ui-slider-range {
+                                                            background: linear-gradient(90deg, #ff6b6b, #cc5de8);
+                                                        }
+
+                                                        /* Request Cards Grid */
+                                                        .luxury-bnb-form .cards-grid {
+                                                            display: grid;
+                                                            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                                                            gap: 12px;
+                                                            margin: 15px 0 20px;
+                                                        }
+
+                                                        .luxury-bnb-form .request-card {
+                                                            background: rgba(255, 255, 255, 0.05);
+                                                            border-radius: 20px;
+                                                            padding: 14px 18px;
+                                                            cursor: pointer;
+                                                            transition: all 0.25s;
+                                                            border: 1px solid rgba(255, 255, 255, 0.08);
+                                                        }
+
+                                                        .luxury-bnb-form .request-card:hover {
+                                                            background: rgba(255, 255, 255, 0.12);
+                                                            transform: translateX(4px);
+                                                        }
+
+                                                        .luxury-bnb-form .request-card.selected {
+                                                            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(204, 93, 232, 0.2));
+                                                            border-color: rgba(255, 107, 107, 0.4);
+                                                        }
+
+                                                        .luxury-bnb-form .card-emoji {
+                                                            font-size: 24px;
+                                                            margin-right: 10px;
+                                                            display: inline-block;
+                                                        }
+
+                                                        .luxury-bnb-form .card-title {
+                                                            font-weight: 600;
+                                                            font-size: 14px;
+                                                            color: white;
+                                                        }
+
+                                                        .luxury-bnb-form .card-desc {
+                                                            font-size: 10px;
+                                                            color: rgba(255, 255, 255, 0.5);
+                                                            margin-top: 5px;
+                                                        }
+
+                                                        .luxury-bnb-form .section-title {
+                                                            font-size: 12px;
+                                                            font-weight: 600;
+                                                            letter-spacing: 1.5px;
+                                                            text-transform: uppercase;
+                                                            color: rgba(255, 255, 255, 0.7);
+                                                            margin: 20px 0 12px 0;
+                                                            display: flex;
+                                                            align-items: center;
+                                                            gap: 8px;
+                                                        }
+
+                                                        /* ========== RESPONSIVE BREAKPOINTS ========== */
+
+                                                        /* Tablet */
+                                                        @media (max-width: 900px) {
+                                                            .luxury-bnb-form .glass-container {
+                                                                padding: 18px 22px;
+                                                                border-radius: 45px;
+                                                            }
+
+                                                            .luxury-bnb-form .grid-2 {
+                                                                grid-template-columns: 1fr;
+                                                                gap: 15px;
+                                                            }
+
+                                                            .luxury-bnb-form .cards-grid {
+                                                                grid-template-columns: repeat(2, 1fr);
+                                                            }
+                                                        }
+
+                                                        /* Mobile */
+                                                        @media (max-width: 700px) {
+                                                            .luxury-bnb-form .glass-container {
+                                                                padding: 16px 18px;
+                                                                border-radius: 35px;
+                                                            }
+
+                                                            .luxury-bnb-form .form-row {
+                                                                flex-direction: column;
+                                                                gap: 12px;
+                                                            }
+
+                                                            .luxury-bnb-form .field {
+                                                                width: 100%;
+                                                                min-width: 100%;
+                                                            }
+
+                                                            .luxury-bnb-form .field input,
+                                                            .luxury-bnb-form .field .custom-select {
+                                                                padding: 10px 16px;
+                                                                font-size: 13px;
+                                                            }
+
+                                                            .luxury-bnb-form .button-row {
+                                                                flex-direction: column;
+                                                            }
+
+                                                            .luxury-bnb-form .toggle-advanced {
+                                                                justify-content: center;
+                                                                width: 100%;
+                                                            }
+
+                                                            .luxury-bnb-form .search-btn {
+                                                                justify-content: center;
+                                                                width: 100%;
+                                                            }
+
+                                                            .luxury-bnb-form .cards-grid {
+                                                                grid-template-columns: 1fr;
+                                                                gap: 10px;
+                                                            }
+
+                                                            .luxury-bnb-form .price-widget {
+                                                                padding: 14px 16px;
+                                                            }
+                                                        }
+
+                                                        /* Small Mobile */
+                                                        @media (max-width: 480px) {
+                                                            .luxury-bnb-form .glass-container {
+                                                                padding: 14px;
+                                                                border-radius: 30px;
+                                                            }
+
+                                                            .luxury-bnb-form .field label {
+                                                                font-size: 9px;
+                                                            }
+
+                                                            .luxury-bnb-form .field input,
+                                                            .luxury-bnb-form .field .custom-select {
+                                                                padding: 8px 14px;
+                                                                font-size: 12px;
+                                                            }
+
+                                                            .luxury-bnb-form .request-card {
+                                                                padding: 10px 14px;
+                                                            }
+
+                                                            .luxury-bnb-form .card-emoji {
+                                                                font-size: 20px;
+                                                            }
+
+                                                            .luxury-bnb-form .card-title {
+                                                                font-size: 13px;
+                                                            }
+                                                        }
+
+                                                        /* Animation */
+                                                        @keyframes fadeInUp {
+                                                            from {
+                                                                opacity: 0;
+                                                                transform: translateY(30px);
+                                                            }
+
+                                                            to {
+                                                                opacity: 1;
+                                                                transform: translateY(0);
+                                                            }
+                                                        }
+
+                                                        .luxury-bnb-form {
+                                                            animation: fadeInUp 0.6s ease-out;
+                                                        }
+                                                    </style>
+
+                                                    <!-- MAIN GLASS CONTAINER -->
+                                                    <div class="glass-container">
+                                                        <!-- ROW 1: Dates & Guests -->
+                                                        <div class="form-row">
+                                                            <div class="field">
+                                                                <label><i class="fas fa-calendar-alt"></i>
+                                                                    CHECK-IN</label>
+                                                                <input type="date" name="checkin" required>
+                                                            </div>
+                                                            <div class="field">
+                                                                <label><i class="fas fa-calendar-check"></i>
+                                                                    CHECK-OUT</label>
+                                                                <input type="date" name="checkout" required>
+                                                            </div>
+                                                            <div class="field">
+                                                                <label><i class="fas fa-user-friends"></i>
+                                                                    GUESTS</label>
+                                                                <div class="custom-select" data-type="guests">
+                                                                    <span class="selected">2 guests</span>
+                                                                    <span class="arrow">▼</span>
+                                                                    <div class="dropdown">
+                                                                        <div class="option">1 guest</div>
+                                                                        <div class="option">2 guests</div>
+                                                                        <div class="option">3 guests</div>
+                                                                        <div class="option">4 guests</div>
+                                                                        <div class="option">5+ guests</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- ROW 2: Location, Occasion, Vibe -->
+                                                        <div class="form-row">
+                                                            <div class="field">
+                                                                <label><i class="fas fa-map-pin"></i>
+                                                                    DESTINATION</label>
+                                                                <input type="text" placeholder="Anywhere"
+                                                                    name="location">
+                                                            </div>
+                                                            <div class="field">
+                                                                <label><i class="fas fa-moon"></i> OCCASION</label>
+                                                                <input type="text"
+                                                                    placeholder="Honeymoon • Birthday • Anniversary"
+                                                                    name="occasion">
+                                                            </div>
+                                                            <div class="field">
+                                                                <label><i class="fas fa-crown"></i> VIBE</label>
+                                                                <div class="custom-select" data-type="vibe">
+                                                                    <span class="selected">Any vibe</span>
+                                                                    <span class="arrow">▼</span>
+                                                                    <div class="dropdown">
+                                                                        <div class="option">Any vibe</div>
+                                                                        <div class="option">🔥 Romantic</div>
+                                                                        <div class="option">🎉 Party</div>
+                                                                        <div class="option">💼 Work</div>
+                                                                        <div class="option">🧘 Wellness</div>
+                                                                        <div class="option">🏔️ Adventure</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- ROW 3: Buttons -->
+                                                        <div class="button-row">
+                                                            <button type="button" class="toggle-advanced">
+                                                                <i class="fas fa-gem"></i> <span>Unique requests</span>
+                                                                <svg width="14" height="14" viewBox="0 0 22 22"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M5.5 12.375V3.4375M5.5 12.375C5.86467 12.375 6.21441 12.5199 6.47227 12.7777C6.73013 13.0356 6.875 13.3853 6.875 13.75C6.875 14.1147 6.73013 14.4644 6.47227 14.7223C6.21441 14.9801 5.86467 15.125 5.5 15.125M5.5 12.375C5.13533 12.375 4.78559 12.5199 4.52773 12.7777C4.26987 13.0356 4.125 13.3853 4.125 13.75C4.125 14.1147 4.26987 14.4644 4.52773 14.7223C4.78559 14.9801 5.13533 15.125 5.5 15.125M5.5 15.125V18.5625M16.5 12.375V3.4375M16.5 12.375C16.8647 12.375 17.2144 12.5199 17.4723 12.7777C17.7301 13.0356 17.875 13.3853 17.875 13.75C17.875 14.1147 17.7301 14.4644 17.4723 14.7223C17.2144 14.9801 16.8647 15.125 16.5 15.125M16.5 12.375C16.1353 12.375 15.7856 12.5199 15.5277 12.7777C15.2699 13.0356 15.125 13.3853 15.125 13.75C15.125 14.1147 15.2699 14.4644 15.5277 14.7223C15.7856 14.9801 16.1353 15.125 16.5 15.125M16.5 15.125V18.5625M11 6.875V3.4375M11 6.875C11.3647 6.875 11.7144 7.01987 11.9723 7.27773C12.2301 7.53559 12.375 7.88533 12.375 8.25C12.375 8.61467 12.2301 8.96441 11.9723 9.22227C11.7144 9.48013 11.3647 9.625 11 9.625M11 6.875C10.6353 6.875 10.2856 7.01987 10.0277 7.27773C9.76987 7.53559 9.625 7.88533 9.625 8.25C9.625 8.61467 9.76987 8.96441 10.0277 9.22227C10.2856 9.48013 10.6353 9.625 11 9.625M11 9.625V18.5625"
+                                                                        stroke="white" stroke-width="1.5"
+                                                                        stroke-linecap="round" />
+                                                                </svg>
+                                                            </button>
+                                                            <button type="submit" class="search-btn">
+                                                                <i class="fas fa-search"></i> Find stay
+                                                            </button>
+                                                        </div>
+
+                                                        <!-- ========== ADVANCED SECTION (Hidden until clicked) ========== -->
+                                                        <div class="advanced-section">
+                                                            <!-- Price & Bedrooms -->
+                                                            <div class="grid-2">
+                                                                <div class="price-widget">
+                                                                    <div class="price-header">
+                                                                        <span><i class="fas fa-tag"></i> Nightly
+                                                                            budget</span>
+                                                                        <span class="price-values">$<span
+                                                                                id="minPrice">0</span> - $<span
+                                                                                id="maxPrice">1000</span></span>
+                                                                    </div>
+                                                                    <div id="priceSlider"></div>
+                                                                    <input type="hidden" name="min-price">
+                                                                    <input type="hidden" name="max-price">
+                                                                </div>
+                                                                <div class="price-widget">
+                                                                    <div class="price-header">
+                                                                        <span><i class="fas fa-bed"></i> Bedrooms</span>
+                                                                    </div>
+                                                                    <div class="custom-select" data-type="bedrooms"
+                                                                        style="margin-top: 5px;">
+                                                                        <span class="selected">Any</span>
+                                                                        <span class="arrow">▼</span>
+                                                                        <div class="dropdown">
+                                                                            <div class="option">Any</div>
+                                                                            <div class="option">1 bedroom</div>
+                                                                            <div class="option">2 bedrooms</div>
+                                                                            <div class="option">3 bedrooms</div>
+                                                                            <div class="option">4+ bedrooms</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Host Interaction -->
+                                                            <div class="section-title">
+                                                                <i class="fas fa-handshake"></i> Host interaction
+                                                            </div>
+                                                            <div class="cards-grid">
+                                                                <div class="request-card" data-value="zero-contact">
+                                                                    <span class="card-emoji">🤖</span>
+                                                                    <span class="card-title">Zero-contact
+                                                                        check-in</span>
+                                                                    <div class="card-desc">Smart lock, no human
+                                                                        interaction</div>
+                                                                </div>
+                                                                <div class="request-card" data-value="local-tips">
+                                                                    <span class="card-emoji">🏠</span>
+                                                                    <span class="card-title">Local host tips</span>
+                                                                    <div class="card-desc">Hidden gems & local secrets
+                                                                    </div>
+                                                                </div>
+                                                                <div class="request-card" data-value="meet-greet">
+                                                                    <span class="card-emoji">🤝</span>
+                                                                    <span class="card-title">Personal meet &
+                                                                        greet</span>
+                                                                    <div class="card-desc">Host welcomes you personally
+                                                                    </div>
+                                                                </div>
+                                                                <div class="request-card" data-value="privacy">
+                                                                    <span class="card-emoji">🔇</span>
+                                                                    <span class="card-title">Absolute privacy</span>
+                                                                    <div class="card-desc">Completely secluded</div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Special Arrangements -->
+                                                            <div class="section-title">
+                                                                <i class="fas fa-gift"></i> Special arrangements
+                                                            </div>
+                                                            <div class="cards-grid">
+                                                                <div class="request-card" data-value="surprise">
+                                                                    <span class="card-emoji">🎁</span>
+                                                                    <span class="card-title">Surprise setup</span>
+                                                                    <div class="card-desc">Flowers, balloons,
+                                                                        decorations</div>
+                                                                </div>
+                                                                <div class="request-card" data-value="chef">
+                                                                    <span class="card-emoji">👨‍🍳</span>
+                                                                    <span class="card-title">Private chef</span>
+                                                                    <div class="card-desc">In-stay chef for special
+                                                                        dinner</div>
+                                                                </div>
+                                                                <div class="request-card" data-value="photographer">
+                                                                    <span class="card-emoji">📸</span>
+                                                                    <span class="card-title">Local photographer</span>
+                                                                    <div class="card-desc">Professional photos during
+                                                                        stay</div>
+                                                                </div>
+                                                                <div class="request-card" data-value="massage">
+                                                                    <span class="card-emoji">💆</span>
+                                                                    <span class="card-title">In-room massage</span>
+                                                                    <div class="card-desc">Spa therapist visits property
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Property Features -->
+                                                            <div class="section-title">
+                                                                <i class="fas fa-star-of-life"></i> Property features
+                                                            </div>
+                                                            <div class="cards-grid">
+                                                                <div class="request-card" data-value="sauna">
+                                                                    <span class="card-emoji">🧖</span>
+                                                                    <span class="card-title">Private sauna</span>
+                                                                    <div class="card-desc">In-unit sauna access</div>
+                                                                </div>
+                                                                <div class="request-card" data-value="rooftop">
+                                                                    <span class="card-emoji">🌆</span>
+                                                                    <span class="card-title">Rooftop terrace</span>
+                                                                    <div class="card-desc">Private outdoor city views
+                                                                    </div>
+                                                                </div>
+                                                                <div class="request-card" data-value="firepit">
+                                                                    <span class="card-emoji">🔥</span>
+                                                                    <span class="card-title">Fire pit</span>
+                                                                    <div class="card-desc">Evening s'mores & stories
+                                                                    </div>
+                                                                </div>
+                                                                <div class="request-card" data-value="cold-plunge">
+                                                                    <span class="card-emoji">❄️</span>
+                                                                    <span class="card-title">Cold plunge</span>
+                                                                    <div class="card-desc">Recovery & wellness</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <!-- Scripts -->
+                                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+                                            <link rel="stylesheet"
+                                                href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function () {
+                                                    // Toggle Advanced Section
+                                                    const toggleBtn = document.querySelector('.toggle-advanced');
+                                                    const advancedSection = document.querySelector('.advanced-section');
+                                                    let isOpen = false;
+
+                                                    if (toggleBtn && advancedSection) {
+                                                        toggleBtn.addEventListener('click', function () {
+                                                            isOpen = !isOpen;
+                                                            advancedSection.classList.toggle('active', isOpen);
+                                                            const svg = this.querySelector('svg');
+                                                            if (svg) {
+                                                                svg.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+                                                            }
+                                                        });
+                                                    }
+
+                                                    // Price Slider
+                                                    if (typeof $ !== 'undefined' && $('#priceSlider').length) {
+                                                        $('#priceSlider').slider({
+                                                            range: true,
+                                                            min: 0,
+                                                            max: 2000,
+                                                            values: [0, 1000],
+                                                            slide: function (event, ui) {
+                                                                $('#minPrice').text(ui.values[0]);
+                                                                $('#maxPrice').text(ui.values[1]);
+                                                                $('input[name="min-price"]').val(ui.values[0]);
+                                                                $('input[name="max-price"]').val(ui.values[1]);
+                                                            }
+                                                        });
+                                                    }
+
+                                                    // Custom Select Dropdowns
+                                                    document.querySelectorAll('.custom-select').forEach(select => {
+                                                        const selected = select.querySelector('.selected');
+                                                        const dropdown = select.querySelector('.dropdown');
+                                                        const options = select.querySelectorAll('.option');
+
+                                                        if (selected && dropdown) {
+                                                            selected.addEventListener('click', (e) => {
+                                                                e.stopPropagation();
+                                                                document.querySelectorAll('.custom-select .dropdown').forEach(d => {
+                                                                    if (d !== dropdown) d.classList.remove('open');
+                                                                });
+                                                                dropdown.classList.toggle('open');
+                                                            });
+                                                        }
+
+                                                        options.forEach(opt => {
+                                                            opt.addEventListener('click', () => {
+                                                                if (selected) selected.textContent = opt.textContent;
+                                                                dropdown.classList.remove('open');
+                                                            });
+                                                        });
+                                                    });
+
+                                                    // Request Card Selection
+                                                    document.querySelectorAll('.request-card').forEach(card => {
+                                                        card.addEventListener('click', function () {
+                                                            this.classList.toggle('selected');
+                                                        });
+                                                    });
+
+                                                    // Close dropdowns on outside click
+                                                    document.addEventListener('click', () => {
+                                                        document.querySelectorAll('.custom-select .dropdown').forEach(d => {
+                                                            d.classList.remove('open');
+                                                        });
+                                                    });
+
+                                                    // Prevent dropdown close when clicking inside
+                                                    document.querySelectorAll('.custom-select .dropdown').forEach(d => {
+                                                        d.addEventListener('click', (e) => e.stopPropagation());
+                                                    });
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -1416,15 +1445,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                                 </div>
 
-                                                <div class="content-bottom">
-                                                    <div class="d-flex gap-8 align-items-center">
-                                                        <div class="avatar avt-40 round">
-                                                            <img src="images/avatar/avt-png1.png" alt="avt">
-                                                        </div>
-                                                        <span>Arlene McCoy</span>
-                                                    </div>
-                                                    <h6 class="price">ksh. 6000/=</h6>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -1833,15 +1854,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                                 </div>
 
-                                                <div class="content-bottom">
-                                                    <div class="d-flex gap-8 align-items-center">
-                                                        <div class="avatar avt-40 round">
-                                                            <img src="images/avatar/avt-png1.png" alt="avt">
-                                                        </div>
-                                                        <span>Arlene McCoy</span>
-                                                    </div>
-                                                    <h6 class="price">ksh. 6000/=</h6>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -2250,15 +2263,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                                 </div>
 
-                                                <div class="content-bottom">
-                                                    <div class="d-flex gap-8 align-items-center">
-                                                        <div class="avatar avt-40 round">
-                                                            <img src="images/avatar/avt-png1.png" alt="avt">
-                                                        </div>
-                                                        <span>Arlene McCoy</span>
-                                                    </div>
-                                                    <h6 class="price">ksh. 6000/=</h6>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -2667,15 +2672,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                                 </div>
 
-                                                <div class="content-bottom">
-                                                    <div class="d-flex gap-8 align-items-center">
-                                                        <div class="avatar avt-40 round">
-                                                            <img src="images/avatar/avt-png1.png" alt="avt">
-                                                        </div>
-                                                        <span>Arlene McCoy</span>
-                                                    </div>
-                                                    <h6 class="price">ksh. 6000/=</h6>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -3084,15 +3081,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                                 </div>
 
-                                                <div class="content-bottom">
-                                                    <div class="d-flex gap-8 align-items-center">
-                                                        <div class="avatar avt-40 round">
-                                                            <img src="images/avatar/avt-png1.png" alt="avt">
-                                                        </div>
-                                                        <span>Arlene McCoy</span>
-                                                    </div>
-                                                    <h6 class="price">ksh. 6000/=</h6>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -3501,15 +3490,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                                 </div>
 
-                                                <div class="content-bottom">
-                                                    <div class="d-flex gap-8 align-items-center">
-                                                        <div class="avatar avt-40 round">
-                                                            <img src="images/avatar/avt-png1.png" alt="avt">
-                                                        </div>
-                                                        <span>Arlene McCoy</span>
-                                                    </div>
-                                                    <h6 class="price">ksh. 6000/=</h6>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>

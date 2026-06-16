@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Penthouse Staycation – Diani Beach | Luopian Homes</title>
+    <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap">
+    <meta name="description" content="Luxury beachfront penthouse rental in Diani, Kenya – perfect for a staycation.">
+
+    <meta name="author" content="themesflat.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- font -->
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="/fonts/font-icons.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="/images/logo/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/logo/favicon.png">
+
+    <style>
+        /* Hero – balanced aspect ratio, text never overlaps */
+        .hero-section {
+            background: url('/properties/mainsittingroom.jpeg') no-repeat center center/cover;
+            min-height: 60vh;
+            aspect-ratio: 16 / 10;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-section .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* -------------------- CINEMATIC ROOM GALLERY -------------------- */
+        .room-gallery-cinematic {
+            background: linear-gradient(145deg, #0a0a0a 0%, #1a1a2e 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .room-gallery-cinematic::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(21, 99, 223, 0.05) 0%, transparent 60%);
+            animation: cinematicGlow 20s infinite alternate;
+            pointer-events: none;
+        }
+        @keyframes cinematicGlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10%, 10%); }
+        }
+
+        .room-gallery-cinematic .section-title {
+            color: #fff;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .room-gallery-cinematic .section-subtitle {
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Each room block – vertical, full width */
+        .room-block {
+            margin-bottom: 40px;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 30px 30px 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        .room-block:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            transform: translateY(-4px);
+        }
+
+        .room-block .room-title {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .room-block .room-title .icon {
+            font-size: 1.8rem;
+        }
+
+        /* Three preview images – row */
+        .room-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .room-preview .preview-img {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .room-preview .preview-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .room-preview .preview-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        .room-preview .preview-img:hover img {
+            transform: scale(1.08);
+        }
+        /* Glass overlay on hover – cinematic */
+        .room-preview .preview-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .room-preview .preview-img:hover::after {
+            opacity: 1;
+        }
+
+        /* View More button – glassmorphism */
+        .room-block .view-more-btn {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+        }
+        .room-block .view-more-btn:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 0 25px rgba(21, 99, 223, 0.3);
+        }
+        .room-block .view-more-btn .icon {
+            transition: transform 0.3s ease;
+        }
+        .room-block .view-more-btn.expanded .icon {
+            transform: rotate(180deg);
+        }
+
+        /* Expanded carousel – hidden by default, slide down */
+        .room-block .room-carousel-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease, margin 0.6s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+        .room-block .room-carousel-wrapper.active {
+            max-height: 600px; /* enough for carousel */
+            opacity: 1;
+            margin-top: 25px;
+        }
+        .room-block .room-carousel-wrapper .swiper-slide img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        .room-block .room-carousel-wrapper .swiper-button-next,
+        .room-block .room-carousel-wrapper .swiper-button-prev {
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        .room-block .room-carousel-wrapper .swiper-button-next:hover,
+        .room-block .room-carousel-wrapper .swiper-button-prev:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        .room-block .room-carousel-wrapper .swiper-button-next::after,
+        .room-block .room-carousel-wrapper .swiper-button-prev::after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .room-block .room-carousel-wrapper .swiper-pagination-bullet {
+            background: rgba(255,255,255,0.4);
+        }
+        .room-block .room-carousel-wrapper .swiper-pagination-bullet-active {
+            background: #1563DF;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section { aspect-ratio: auto; min-height: 50vh; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1rem; }
+            .room-preview {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            .room-preview .preview-img {
+                aspect-ratio: 1 / 1;
+            }
+            .room-block .room-carousel-wrapper .swiper-slide img {
+                height: 200px;
+            }
+            .room-block {
+                padding: 20px 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .room-preview {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            .room-preview .preview-img {
+                aspect-ratio: 3 / 4;
+            }
+        }
+
+        /* Sidebar – remove For Sale tab, keep only "Staycations" */
+        .nav-tab-form .nav-link-item[href="#forSale"] {
+            display: none;
+        }
+        .widget-price {
+            display: none;
+        }
+
+        /* WhatsApp button */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            color: #fff;
+        }
+        .whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Map section – before footer */
+        .map-section {
+            padding: 60px 0;
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <!-- preload -->
+    <div class="preload preload-container">
+        <div class="preload-logo">
+            <div class="spinner"></div>
+            <span class="icon icon-villa-fill"></span>
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div id="pagee" class="clearfix">
+
+            <!-- ========== HEADER ========== -->
+            <header id="header" class="main-header header-fixed fixed-header">
+                <!-- Header Lower -->
+                <div class="header-lower">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="inner-header">
+                                <div class="inner-header-left">
+                                    <div class="logo-box flex">
+                                        <div class="logo">
+                                            <a href="/index.html"><img src="/images/logo/whitelogo.png" alt="logo"
+                                                    width="166" height="48" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="nav-outer flex align-center">
+                                        <nav class="main-menu show navbar-expand-md">
+                                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                                <ul class="navigation clearfix">
+                                                    <li class="home current">
+                                                        <a href="/index.html">Home</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/property-halfmap-grid.html">Listing</a>
+                                                    </li>
+                                                    <li><a href="/about-us.html">About Us</a></li>
+                                                    <li>
+                                                        <a href="/our-service.html">Services & FAQ</a>
+                                                    </li>
+                                                    <li><a href="/contact.html">Contact Us</a></li>
+                                                    <li>
+                                                        <a href="/privacy-policy.html">Privacy Policy</a>
+                                                    </li>
+                                                    <li><a href="/blog-grid.html">Gallery</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <!-- SIGN IN & SUBMIT PROPERTY - COMMENTED OUT -->
+
+                                <div class="mobile-nav-toggler mobile-button">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu  -->
+                <div class="close-btn">
+                    <span class="icon flaticon-cancel-1"></span>
+                </div>
+                <div class="mobile-menu">
+                    <div class="menu-backdrop"></div>
+                    <nav class="menu-box">
+                        <div class="nav-logo">
+                            <a href="/index.html"><img src="/images/logo/whitelogo.png" alt="nav-logo" width="174"
+                                    height="44" /></a>
+                        </div>
+                        <div class="bottom-canvas">
+                            <div class="menu-outer"></div>
+                            <div class="mobi-icon-box">
+                                <div class="box d-flex align-items-center">
+                                    <span class="icon icon-phone2"></span>
+                                    <div>+254 791 599 991</div>
+                                </div>
+                                <div class="box d-flex align-items-center">
+                                    <span class="icon icon-mail"></span>
+                                    <div>Onyangom383@gmail.com</div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- End Mobile Menu -->
+            </header>
+            <!-- End Main Header -->
+
+            <!-- ========== HERO SECTION ========== -->
+            <section class="hero-section">
+                <div class="overlay"></div>
+                <div class="container hero-content">
+                    <h1 class="wow fadeInUp" data-wow-delay=".2s">Oceanview Penthouse</h1>
+                    <p class="wow fadeInUp" data-wow-delay=".4s">Diani Beach – 3 Bedrooms · 2 Baths · Sleeps 6</p>
+                    <a href="#rooms" class="tf-btn primary wow fadeInUp" data-wow-delay=".6s">Explore the Spaces</a>
+                </div>
+            </section>
+
+            <!-- ========== CINEMATIC ROOM GALLERY – VERTICAL SECTIONS ========== -->
+            <section id="rooms" class="room-gallery-cinematic">
+                <div class="container">
+                    <h2 class="section-title">Room‑by‑Room Gallery</h2>
+                    <p class="section-subtitle">Hover over images for a cinematic feel – click “View More” to see all photos</p>
+
+                    <!-- ROOM 1: Sitting Room -->
+                    <div class="room-block">
+                        <div class="room-title">
+                            <span class="icon icon-sofa"></span> Sitting Room
+                        </div>
+                        <div class="room-preview">
+                            <div class="preview-img"><img src="/properties/sittingroom.jpeg" alt="Sitting 1"></div>
+                            <div class="preview-img"><img src="/properties/blacksittingroom1.jpeg" alt="Sitting 2"></div>
+                            <div class="preview-img"><img src="/properties/blacksittingroom11.jpeg" alt="Sitting 3"></div>
+                        </div>
+                        <button class="view-more-btn" data-target="carousel-sitting">
+                            View More <span class="icon icon-arrow-down"></span>
+                        </button>
+                        <div id="carousel-sitting" class="room-carousel-wrapper">
+                            <div class="swiper swiper-room">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="/properties/sittingroom1.jpeg" alt="Sitting 1"></div>
+                                    <div class="swiper-slide"><img src="/properties/sittingroom2.jpeg" alt="Sitting 2"></div>
+                                    <div class="swiper-slide"><img src="/properties/sittingroombrown.jpeg" alt="Sitting 3"></div>
+                                    <div class="swiper-slide"><img src="/properties/mainsittingroom.jpeg" alt="Sitting 4"></div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROOM 2: Dining Room -->
+                    <div class="room-block">
+                        <div class="room-title">
+                            <span class="icon icon-dining"></span> Dining Room
+                        </div>
+                        <div class="room-preview">
+                            <div class="preview-img"><img src="/properties/livingroom1.jpeg" alt="Living 1"></div>
+                            <div class="preview-img"><img src="/properties/livingroom12.jpeg" alt="Living 2"></div>
+                            <div class="preview-img"><img src="/properties/livingroom13.jpeg" alt="Living 3"></div>
+                        </div>
+                        <button class="view-more-btn" data-target="carousel-living">
+                            View More <span class="icon icon-arrow-down"></span>
+                        </button>
+                        <div id="carousel-living" class="room-carousel-wrapper">
+                            <div class="swiper swiper-room">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="/properties/livingroom1.jpeg" alt="Living 1"></div>
+                                    <div class="swiper-slide"><img src="/properties/livingroom12.jpeg" alt="Living 2"></div>
+                                    <div class="swiper-slide"><img src="/properties/livingroom13.jpeg" alt="Living 3"></div>
+                                    <div class="swiper-slide"><img src="/properties/livingroom14.jpeg" alt="Living 4"></div>
+                                    <div class="swiper-slide"><img src="/properties/livingroom16.jpeg" alt="Living 5"></div><div class="swiper-slide"><img src="/properties/livingroom16.jpeg" alt="Living 5"></div>
+                                    <div class="swiper-slide"><img src="/properties/livingroom16.jpeg" alt="Living 5"></div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROOM 3: Bathroom -->
+                    <div class="room-block">
+                        <div class="room-title">
+                            <span class="icon icon-bath"></span> Bathroom
+                        </div>
+                        <div class="room-preview">
+                            <div class="preview-img"><img src="/properties/bathroom1.jpeg" alt="Bath 1"></div>
+                            <div class="preview-img"><img src="/properties/bathroom3.jpeg" alt="Bath 2"></div>
+                            <div class="preview-img"><img src="/properties/bathroom4.jpeg" alt="Bath 3"></div>
+                        </div>
+                        <button class="view-more-btn" data-target="carousel-bath">
+                            View More <span class="icon icon-arrow-down"></span>
+                        </button>
+                        <div id="carousel-bath" class="room-carousel-wrapper">
+                            <div class="swiper swiper-room">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="/properties/bathroom1.jpeg" alt="Bath 1"></div>
+                                    <div class="swiper-slide"><img src="/properties/bathroom3.jpeg" alt="Bath 2"></div>
+                                    <div class="swiper-slide"><img src="/properties/bathroom4.jpeg" alt="Bath 3"></div>
+                                    <div class="swiper-slide"><img src="/properties/bathtub1.jpeg" alt="Bath 4"></div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROOM 4: Kitchen -->
+                    <div class="room-block">
+                        <div class="room-title">
+                            <span class="icon icon-kitchen"></span> Kitchen
+                        </div>
+                        <div class="room-preview">
+                            <div class="preview-img"><img src="/properties/kitchen1.jpeg" alt="Kitchen 1"></div>
+                            <div class="preview-img"><img src="/properties/kitchen11.jpeg" alt="Kitchen 2"></div>
+                            <div class="preview-img"><img src="/properties/kitchen13.jpeg" alt="Kitchen 3"></div>
+                        </div>
+                        <button class="view-more-btn" data-target="carousel-kitchen">
+                            View More <span class="icon icon-arrow-down"></span>
+                        </button>
+                        <div id="carousel-kitchen" class="room-carousel-wrapper">
+                            <div class="swiper swiper-room">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="/properties/kitchen1.jpeg" alt="Kitchen 1"></div>
+                                    <div class="swiper-slide"><img src="/properties/kitchen11.jpeg" alt="Kitchen 2"></div>
+                                    <div class="swiper-slide"><img src="/properties/kitchen13.jpeg" alt="Kitchen 3"></div>
+                                    <div class="swiper-slide"><img src="/properties/kitchen14.jpeg" alt="Kitchen 4"></div>
+                                    <div class="swiper-slide"><img src="/properties/utensilswasher.jpeg" alt="Kitchen 4"></div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROOM 5: Washing Area -->
+                    <div class="room-block">
+                        <div class="room-title">
+                            <span class="icon icon-washing"></span> Washing Area
+                        </div>
+                        <div class="room-preview">
+                            <div class="preview-img"><img src="/properties/washer.jpeg" alt="Wash 1"></div>
+                            <div class="preview-img"><img src="/properties/utensilswasher.jpeg" alt="Wash 2"></div>
+                            <div class="preview-img"><img src="/properties/washer.jpeg" alt="Wash 3"></div>
+                        </div>
+                        <button class="view-more-btn" data-target="carousel-wash">
+                            View More <span class="icon icon-arrow-down"></span>
+                        </button>
+                        <div id="carousel-wash" class="room-carousel-wrapper">
+                            <div class="swiper swiper-room">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="/properties/washer.jpeg" alt="Wash 1"></div>
+                                    <div class="swiper-slide"><img src="/properties/utensilswasher.jpeg" alt="Wash 2"></div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROOM 6: Balcony & Views -->
+                    <div class="room-block">
+                        <div class="room-title">
+                            <span class="icon icon-balcony"></span> Balcony & Views
+                        </div>
+                        <div class="room-preview">
+                            <div class="preview-img"><img src="/properties/outsideview.jpeg" alt="Balcony 1"></div>
+                            <div class="preview-img"><img src="/properties/oceanviewday.jpeg" alt="Ocean day"></div>
+                            <div class="preview-img"><img src="/properties/oceanviewnight.jpeg" alt="Ocean night"></div>
+                        </div>
+                        <button class="view-more-btn" data-target="carousel-balcony">
+                            View More <span class="icon icon-arrow-down"></span>
+                        </button>
+                        <div id="carousel-balcony" class="room-carousel-wrapper">
+                            <div class="swiper swiper-room">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="/properties/outsideview.jpeg" alt="Balcony 1"></div>
+                                    <div class="swiper-slide"><img src="/properties/oceanviewday.jpeg" alt="Ocean day"></div>
+                                    <div class="swiper-slide"><img src="/properties/oceanviewnight.jpeg" alt="Ocean night"></div>
+                                    <div class="swiper-slide"><img src="/properties/outview.jpeg" alt="Balcony 2"></div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ROOM 7: Other Spaces -->
+                    <div class="room-block">
+                        <div class="room-title">
+                            <span class="icon icon-image"></span> Other Spaces
+                        </div>
+                        <div class="room-preview">
+                            <div class="preview-img"><img src="/properties/coridow.jpeg" alt="Corridor"></div>
+                            <div class="preview-img"><img src="/properties/safe.jpeg" alt="Safe"></div>
+                            <div class="preview-img"><img src="/properties/Tv1.jpeg" alt="TV"></div>
+                        </div>
+                        <button class="view-more-btn" data-target="carousel-other">
+                            View More <span class="icon icon-arrow-down"></span>
+                        </button>
+                        <div id="carousel-other" class="room-carousel-wrapper">
+                            <div class="swiper swiper-room">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="/properties/coridow.jpeg" alt="Corridor"></div>
+                                    <div class="swiper-slide"><img src="/properties/safe.jpeg" alt="Safe"></div>
+                                    <div class="swiper-slide"><img src="/properties/Tv1.jpeg" alt="TV"></div>
+                                    <div class="swiper-slide"><img src="/properties/ironstand1.jpeg" alt="Iron stand"></div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ========== PROPERTY DETAILS (all original sections, repurposed for rental) ========== -->
+            <section class="flat-section-v3 flat-property-detail">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-7">
+                            <!-- DESCRIPTION -->
+                            <div class="single-property-element single-property-desc">
+                                <h5 class="fw-6 title">About This Staycation</h5>
+                                <p class="text-variant-1">Perched on the pristine shores of Diani Beach, this penthouse offers breathtaking 180° ocean views. Designed for relaxation, the open‑plan living area flows onto a vast balcony – perfect for sundowners. With three en‑suite bedrooms, a modern kitchen, and direct beach access, it’s the ultimate Kenyan coastal escape.</p>
+                                <p class="mt-8 text-variant-1">Enjoy the infinity pool, private beach cabanas, and 24‑hour security. Ideal for families, couples, or small groups looking for a luxury staycation.</p>
+                                <a href="#" class="btn-view"><span class="text">View full album</span> </a>
+                            </div>
+
+                            <!-- OVERVIEW / RENTAL DETAILS -->
+                            <div class="single-property-element single-property-overview">
+                                <h6 class="title fw-6">Rental Details</h6>
+                                <ul class="info-box">
+                                    <li class="item">
+                                        <a href="#" class="box-icon w-52"><i class="icon icon-house-line"></i></a>
+                                        <div class="content">
+                                            <span class="label">Property ID:</span>
+                                            <span>P-1024</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" class="box-icon w-52"><i class="icon icon-sliders-horizontal"></i></a>
+                                        <div class="content">
+                                            <span class="label">Type:</span>
+                                            <span>Penthouse</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" class="box-icon w-52"><i class="icon icon-garage"></i></a>
+                                        <div class="content">
+                                            <span class="label">Parking:</span>
+                                            <span>2 spots</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" class="box-icon w-52"><i class="icon icon-bed1"></i></a>
+                                        <div class="content">
+                                            <span class="label">Bedrooms:</span>
+                                            <span>3 (2 king, 1 twin)</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" class="box-icon w-52"><i class="icon icon-bathtub"></i></a>
+                                        <div class="content">
+                                            <span class="label">Bathrooms:</span>
+                                            <span>2 (1 en‑suite)</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" class="box-icon w-52"><i class="icon icon-crop"></i></a>
+                                        <div class="content">
+                                            <span class="label">Floor area:</span>
+                                            <span>1,800 SqFt</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" class="box-icon w-52"><i class="icon icon-hammer"></i></a>
+                                        <div class="content">
+                                            <span class="label">Year built:</span>
+                                            <span>2024</span>
+                                        </div>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" class="box-icon w-52"><i class="icon icon-ruler"></i></a>
+                                        <div class="content">
+                                            <span class="label">Max guests:</span>
+                                            <span>6</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- VIDEO -->
+                            <div class="single-property-element single-property-video">
+                                <h5 class="title fw-6">Virtual Tour</h5>
+                                <div class="img-video">
+                                    <img src="/images/banner/img-video.jpg" alt="video thumbnail">
+                                    <a href="https://youtu.be/MLpWrANjFbI" data-fancybox="gallery2" class="btn-video"> <span class="icon icon-play"></span></a>
+                                </div>
+                            </div>
+
+                            <!-- PROPERTY INFORMATION (rental specific) -->
+                            <div class="single-property-element single-property-info">
+                                <h5 class="title fw-6">Rental Information</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="inner-box">
+                                            <span class="label text-black-3">Check‑in</span>
+                                            <div class="content text-black-3">3:00 PM</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="inner-box">
+                                            <span class="label text-black-3">Check‑out</span>
+                                            <div class="content text-black-3">11:00 AM</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="inner-box">
+                                            <span class="label text-black-3">Minimum stay</span>
+                                            <div class="content text-black-3">2 nights</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="inner-box">
+                                            <span class="label text-black-3">Cancellation</span>
+                                            <div class="content text-black-3">Flexible (free 48h)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="inner-box">
+                                            <span class="label text-black-3">Pets</span>
+                                            <div class="content text-black-3">Not allowed</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="inner-box">
+                                            <span class="label text-black-3">Smoking</span>
+                                            <div class="content text-black-3">No (balcony only)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="inner-box">
+                                            <span class="label text-black-3">WiFi</span>
+                                            <div class="content text-black-3">Free high‑speed</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="inner-box">
+                                            <span class="label text-black-3">Parking</span>
+                                            <div class="content text-black-3">Free on‑site</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AMENITIES -->
+                            <div class="single-property-element single-property-feature">
+                                <h5 class="title fw-6">Amenities & Features</h5>
+                                <div class="wrap-feature">
+                                    <div class="box-feature">
+                                        <ul>
+                                            <li class="feature-item">Infinity pool</li>
+                                            <li class="feature-item">Ocean‑view balcony</li>
+                                            <li class="feature-item">Air conditioning</li>
+                                            <li class="feature-item">Smart TV & Netflix</li>
+                                        </ul>
+                                    </div>
+                                    <div class="box-feature">
+                                        <ul>
+                                            <li class="feature-item">Full kitchen</li>
+                                            <li class="feature-item">Washing machine</li>
+                                            <li class="feature-item">Beach towels & chairs</li>
+                                            <li class="feature-item">24‑hr security</li>
+                                        </ul>
+                                    </div>
+                                    <div class="box-feature">
+                                        <ul>
+                                            <li class="feature-item">Private beach access</li>
+                                            <li class="feature-item">BBQ grill</li>
+                                            <li class="feature-item">Daily housekeeping (extra)</li>
+                                            <li class="feature-item">Concierge service</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NEARBY ATTRACTIONS -->
+                            <div class="single-property-element single-property-nearby">
+                                <h5 class="title fw-6">Nearby Attractions</h5>
+                                <p>Explore the best of Diani – from water sports to local cuisine, all within minutes.</p>
+                                <div class="row box-nearby">
+                                    <div class="col-md-5">
+                                        <ul class="box-left">
+                                            <li class="item-nearby">
+                                                <span class="label">Beach:</span>
+                                                <span class="fw-7">50 m</span>
+                                            </li>
+                                            <li class="item-nearby">
+                                                <span class="label">Restaurants:</span>
+                                                <span class="fw-7">200 m</span>
+                                            </li>
+                                            <li class="item-nearby">
+                                                <span class="label">Supermarket:</span>
+                                                <span class="fw-7">800 m</span>
+                                            </li>
+                                            <li class="item-nearby">
+                                                <span class="label">Water sports:</span>
+                                                <span class="fw-7">1.2 km</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <ul class="box-right">
+                                            <li class="item-nearby">
+                                                <span class="label">Hospital:</span>
+                                                <span class="fw-7">3 km</span>
+                                            </li>
+                                            <li class="item-nearby">
+                                                <span class="label">Airport:</span>
+                                                <span class="fw-7">30 km</span>
+                                            </li>
+                                            <li class="item-nearby">
+                                                <span class="label">Golf course:</span>
+                                                <span class="fw-7">4 km</span>
+                                            </li>
+                                            <li class="item-nearby">
+                                                <span class="label">National park:</span>
+                                                <span class="fw-7">15 km</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- REVIEWS -->
+                            <div class="single-property-element single-wrapper-review">
+                                <h5 class="title fw-6">Guest Reviews</h5>
+                                <form class="wrap-review">
+                                    <ul class="box-review">
+                                        <li class="list-review-item">
+                                            <div class="avatar avt-60">
+                                                <img src="/images/avatar/avt-2.jpg" alt="avatar">
+                                            </div>
+                                            <div class="content">
+                                                <div class="box-head">
+                                                    <div class="d-flex align-items-center flex-wrap justify-content-between gap-8">
+                                                        <h6>Floyd Miles</h6>
+                                                        <ul class="list-star">
+                                                            <li class="icon icon-star"></li>
+                                                            <li class="icon icon-star"></li>
+                                                            <li class="icon icon-star"></li>
+                                                            <li class="icon icon-star"></li>
+                                                            <li class="icon icon-star"></li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="mt-4 caption-2 text-variant-2">January 2026</p>
+                                                </div>
+                                                <p>"Absolutely stunning! The view is even better than the photos. The penthouse was spotless, and the host was super responsive. We’ll be back!"</p>
+                                                <div class="box-img">
+                                                    <div class="img"><img src="/images/blog/review1.jpg" alt="review"></div>
+                                                    <div class="img"><img src="/images/blog/review2.jpg" alt="review"></div>
+                                                </div>
+                                                <div class="action mt-12">
+                                                    <div class="d-flex align-items-center gap-6">
+                                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12.375 6.75H10.6875M4.66949 14.0625C4.66124 14.025 4.64849 13.9875 4.63049 13.9515C4.18724 13.0515 3.93749 12.039 3.93749 10.9687C3.93587 9.89238 4.19282 8.83136 4.68674 7.875M4.66949 14.0625C4.72649 14.3362 4.53224 14.625 4.23824 14.625H3.55724C2.89049 14.625 2.27249 14.2365 2.07824 13.599C1.82399 12.7665 1.68749 11.8837 1.68749 10.9687C1.68749 9.804 1.90874 8.69175 2.31074 7.67025C2.54024 7.08975 3.12524 6.75 3.74999 6.75H4.53974C4.89374 6.75 5.09849 7.167 4.91474 7.47C4.83434 7.60234 4.7578 7.73742 4.68674 7.875M4.66949 14.0625H5.63999C6.0027 14.0623 6.36307 14.1205 6.70724 14.235L9.04274 15.015C9.38691 15.1295 9.74728 15.1877 10.11 15.1875H13.122C13.5855 15.1875 14.0347 15.0022 14.3257 14.6407C15.6143 13.0434 16.3156 11.0523 16.3125 9C16.3125 8.6745 16.2952 8.35275 16.2615 8.03625C16.1797 7.2705 15.4905 6.75 14.721 6.75H12.3765C11.913 6.75 11.6332 6.207 11.8327 5.7885C12.191 5.03444 12.3763 4.20985 12.375 3.375C12.375 2.92745 12.1972 2.49823 11.8807 2.18176C11.5643 1.86529 11.135 1.6875 10.6875 1.6875C10.5383 1.6875 10.3952 1.74676 10.2897 1.85225C10.1843 1.95774 10.125 2.10082 10.125 2.25V2.72475C10.125 3.1545 10.0425 3.57975 9.88349 3.97875C9.65549 4.54875 9.18599 4.97625 8.64374 5.265C7.81128 5.7092 7.0807 6.32228 6.49874 7.065C6.12524 7.5405 5.57924 7.875 4.97474 7.875H4.68674" stroke="#7C818B" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                        <span class="font-rubik">Helpful</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-review-item">
+                                            <div class="avatar avt-60">
+                                                <img src="/images/avatar/avt-3.jpg" alt="avatar">
+                                            </div>
+                                            <div class="content">
+                                                <div class="box-head">
+                                                    <div class="d-flex align-items-center flex-wrap justify-content-between gap-8">
+                                                        <h6>Kristin Watson</h6>
+                                                        <ul class="list-star">
+                                                            <li class="icon icon-star"></li>
+                                                            <li class="icon icon-star"></li>
+                                                            <li class="icon icon-star"></li>
+                                                            <li class="icon icon-star"></li>
+                                                            <li class="icon icon-star"></li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="mt-4 caption-2 text-variant-2">December 2025</p>
+                                                </div>
+                                                <p>"The perfect family getaway! The kids loved the pool and the beach is just a short walk. The kitchen had everything we needed. Highly recommend!"</p>
+                                                <div class="action mt-12">
+                                                    <div class="d-flex align-items-center gap-6">
+                                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12.375 6.75H10.6875M4.66949 14.0625C4.66124 14.025 4.64849 13.9875 4.63049 13.9515C4.18724 13.0515 3.93749 12.039 3.93749 10.9687C3.93587 9.89238 4.19282 8.83136 4.68674 7.875M4.66949 14.0625C4.72649 14.3362 4.53224 14.625 4.23824 14.625H3.55724C2.89049 14.625 2.27249 14.2365 2.07824 13.599C1.82399 12.7665 1.68749 11.8837 1.68749 10.9687C1.68749 9.804 1.90874 8.69175 2.31074 7.67025C2.54024 7.08975 3.12524 6.75 3.74999 6.75H4.53974C4.89374 6.75 5.09849 7.167 4.91474 7.47C4.83434 7.60234 4.7578 7.73742 4.68674 7.875M4.66949 14.0625H5.63999C6.0027 14.0623 6.36307 14.1205 6.70724 14.235L9.04274 15.015C9.38691 15.1295 9.74728 15.1877 10.11 15.1875H13.122C13.5855 15.1875 14.0347 15.0022 14.3257 14.6407C15.6143 13.0434 16.3156 11.0523 16.3125 9C16.3125 8.6745 16.2952 8.35275 16.2615 8.03625C16.1797 7.2705 15.4905 6.75 14.721 6.75H12.3765C11.913 6.75 11.6332 6.207 11.8327 5.7885C12.191 5.03444 12.3763 4.20985 12.375 3.375C12.375 2.92745 12.1972 2.49823 11.8807 2.18176C11.5643 1.86529 11.135 1.6875 10.6875 1.6875C10.5383 1.6875 10.3952 1.74676 10.2897 1.85225C10.1843 1.95774 10.125 2.10082 10.125 2.25V2.72475C10.125 3.1545 10.0425 3.57975 9.88349 3.97875C9.65549 4.54875 9.18599 4.97625 8.64374 5.265C7.81128 5.7092 7.0807 6.32228 6.49874 7.065C6.12524 7.5405 5.57924 7.875 4.97474 7.875H4.68674" stroke="#7C818B" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                        <span class="font-rubik">Helpful</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-review-item">
+                                            <button class="tf-btn btn-line">View all reviews</button>
+                                        </li>
+                                    </ul>
+                                </form>
+                                <!-- Leave a comment -->
+                                <div class="wrap-form-comment">
+                                    <h5 class="text-black-2">Share your experience</h5>
+                                    <p class="text-variant-1 mt-8">Your email address will not be published. Required fields are marked *</p>
+                                    <div id="comments" class="comments">
+                                        <div class="respond-comment">
+                                            <form class="comment-form form-submit">
+                                                <div class="form-wg group-ip">
+                                                    <fieldset>
+                                                        <label class="sub-ip">Name</label>
+                                                        <input type="text" class="form-control" name="text" placeholder="Your name" required="">
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <label class="sub-ip">Email</label>
+                                                        <input type="email" class="form-control" name="email" placeholder="Your email" required="">
+                                                    </fieldset>
+                                                </div>
+                                                <fieldset class="form-wg">
+                                                    <label class="sub-ip">Review</label>
+                                                    <textarea name="message" rows="4" tabindex="4"
+                                                        placeholder="Write comment " aria-required="true"></textarea>
+                                                </fieldset> 
+                                                <button class="form-wg tf-btn primary w-100" name="submit" type="submit">
+                                                    <span>Post Comment</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col-8 -->
+
+                        <!-- ========== SIDEBAR ========== -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="single-sidebar fixed-sidebar">
+                                <!-- WhatsApp Contact -->
+                                <div class="widget-box" style="padding:20px; background:#f8f9fa; border-radius:12px; text-align:center;">
+                                    <h5 class="title fw-6">📱 Contact Host on WhatsApp</h5>
+                                    <p class="text-variant-1">Quickest way to inquire about availability</p>
+                                    <a href="https://wa.me/254791599991?text=I'm%20inquiring%20about%20the%20Oceanview%20Penthouse%20in%20Diani%20-%20https://luopian.com/properties/penthouse/" 
+                                       target="_blank" class="whatsapp-btn">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                        </svg>
+                                        Chat on WhatsApp
+                                    </a>
+                                </div>
+
+                                <!-- Filter/Search – only "Staycations" -->
+                                <div class="flat-tab flat-tab-form widget-filter-search widget-box">
+                                    <ul class="nav-tab-form" role="tablist">
+                                        <li class="nav-tab-item" role="presentation">   
+                                            <a href="#forRent" class="nav-link-item active" data-bs-toggle="tab">Staycations</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade active show" role="tabpanel">
+                                            <div class="form-sl">
+                                                <form method="post">
+                                                    <div class="wd-filter-select">
+                                                        <div class="inner-group">
+                                                            <div class="box">
+                                                                <div class="form-style">
+                                                                    <input type="text" class="form-control" placeholder="Type keyword...." value="" name="s" title="Search for" required="">
+                                                                </div>
+                                                                <div class="form-style">
+                                                                    <div class="group-ip ip-icon">
+                                                                        <input type="text" class="form-control" placeholder="Location" value="" name="s" title="Search for" required="">
+                                                                        <a href="#" class="icon-right icon-location"></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-style">
+                                                                    <div class="group-select">
+                                                                        <div class="nice-select" tabindex="0"><span class="current">Property type</span>
+                                                                            <ul class="list">                                                       
+                                                                                <li data-value="villa" class="option">Villa</li>
+                                                                                <li data-value="studio" class="option">Studio</li>
+                                                                                <li data-value="apartment" class="option">Apartment</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>                                                    
+                                                                </div>
+                                                                <div class="form-style box-select">
+                                                                    <div class="nice-select" tabindex="0"><span class="current">Room</span>
+                                                                        <ul class="list"> 
+                                                                            <li data-value="2" class="option">1</li>
+                                                                            <li data-value="2" class="option selected">2</li>
+                                                                            <li data-value="3" class="option">3</li>
+                                                                            <li data-value="4" class="option">4</li>
+                                                                            <li data-value="5" class="option">5</li>
+                                                                            <li data-value="6" class="option">6</li>
+                                                                            <li data-value="7" class="option">7</li>
+                                                                            <li data-value="8" class="option">8</li>
+                                                                            <li data-value="9" class="option">9</li>
+                                                                            <li data-value="10" class="option">10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-style box-select">
+                                                                    <div class="nice-select" tabindex="0"><span class="current">Bathrooms</span>
+                                                                        <ul class="list"> 
+                                                                            <li data-value="all" class="option">All</li>
+                                                                            <li data-value="1" class="option">1</li>
+                                                                            <li data-value="2" class="option">2</li>
+                                                                            <li data-value="3" class="option">3</li>
+                                                                            <li data-value="4" class="option selected">4</li>
+                                                                            <li data-value="5" class="option">5</li>
+                                                                            <li data-value="6" class="option">6</li>
+                                                                            <li data-value="7" class="option">7</li>
+                                                                            <li data-value="8" class="option">8</li>
+                                                                            <li data-value="9" class="option">9</li>
+                                                                            <li data-value="10" class="option">10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-style box-select">
+                                                                    <div class="nice-select" tabindex="0"><span class="current">Bedrooms</span>
+                                                                        <ul class="list"> 
+                                                                            <li data-value="1" class="option">All</li>
+                                                                            <li data-value="1" class="option">1</li>
+                                                                            <li data-value="2" class="option">2</li>
+                                                                            <li data-value="3" class="option">3</li>
+                                                                            <li data-value="4" class="option selected">4</li>
+                                                                            <li data-value="5" class="option">5</li>
+                                                                            <li data-value="6" class="option">6</li>
+                                                                            <li data-value="7" class="option">7</li>
+                                                                            <li data-value="8" class="option">8</li>
+                                                                            <li data-value="9" class="option">9</li>
+                                                                            <li data-value="10" class="option">10</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Price sliders removed -->
+                                                            <div class="box">
+                                                                <div class="form-style wd-amenities">
+                                                                    <div class="group-checkbox">
+                                                                        <h6 class="title text-black-2">Amenities:</h6>
+                                                                        <div class="group-amenities">
+                                                                            <!-- abbreviated for brevity – keep your full list -->
+                                                                            <fieldset class="amenities-item">
+                                                                                <input type="checkbox" class="tf-checkbox style-1" id="cb1" checked> 
+                                                                                <label for="cb1" class="text-cb-amenities">Air Condition</label>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-style">
+                                                                <button type="submit" class="tf-btn btn-view primary hover-btn-view">Search Properties <span class="icon icon-arrow-right2"></span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Why Choose -->
+                                <div class="widget-box single-property-whychoose">
+                                    <h5 class="title fw-6">Why Choose This Stay</h5>
+                                    <ul class="box-whychoose">
+                                        <li class="item-why">
+                                            <i class="icon icon-secure"></i>
+                                            Safe & Secure
+                                        </li>
+                                        <li class="item-why">
+                                            <i class="icon icon-guarantee"></i>
+                                            Best Price Guarantee
+                                        </li>
+                                        <li class="item-why">
+                                            <i class="icon icon-booking"></i>
+                                            Instant Confirmation
+                                        </li>
+                                        <li class="item-why">
+                                            <i class="icon icon-support"></i>
+                                            24/7 Guest Support
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Other Rentals -->
+                                <div class="box-latest-property">
+                                    <h5 class="fw-6 title">Other Rentals</h5>
+                                    <ul>
+                                        <li class="latest-property-item">
+                                            <a href="/property-details-v1.html" class="images-style">
+                                                <img src="/images/home/house-8.jpg" alt="img">
+                                            </a>
+                                            <div class="content">
+                                                <div class="text-capitalize text-btn"><a href="/property-details-v1.html" class="link">Beachfront Villa</a></div>
+                                                <ul class="meta-list mt-6">
+                                                    <li class="item"><i class="icon icon-bed"></i><span class="text-variant-1">Beds:</span><span class="fw-6">4</span></li>
+                                                    <li class="item"><i class="icon icon-bath"></i><span class="text-variant-1">Baths:</span><span class="fw-6">3</span></li>
+                                                    <li class="item"><i class="icon icon-sqft"></i><span class="text-variant-1">Sqft:</span><span class="fw-6">1800</span></li>
+                                                </ul>
+                                                <div class="mt-10 text-btn">$450 / night</div>
+                                            </div>
+                                        </li>
+                                        <li class="latest-property-item">
+                                            <a href="/property-details-v1.html" class="images-style">
+                                                <img src="/images/home/house-3.jpg" alt="img">
+                                            </a>
+                                            <div class="content">
+                                                <div class="text-capitalize text-btn"><a href="/property-details-v1.html" class="link">Cozy Cottage</a></div>
+                                                <ul class="meta-list mt-6">
+                                                    <li class="item"><i class="icon icon-bed"></i><span class="text-variant-1">Beds:</span><span class="fw-6">2</span></li>
+                                                    <li class="item"><i class="icon icon-bath"></i><span class="text-variant-1">Baths:</span><span class="fw-6">1</span></li>
+                                                    <li class="item"><i class="icon icon-sqft"></i><span class="text-variant-1">Sqft:</span><span class="fw-6">850</span></li>
+                                                </ul>
+                                                <div class="mt-10 text-btn">$200 / night</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> <!-- end col-4 -->
+                    </div> <!-- end row -->
+                </div> <!-- end container -->
+            </section>
+
+            <!-- ========== MAP SECTION (before footer) ========== -->
+            <section class="map-section">
+                <div class="container">
+                    <h5 class="fw-6 title text-center mb-4">📍 Location</h5>
+                    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.884251413046!2d39.583315!3d-4.305257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184056fa2c9f0a0b%3A0x7f3e6c3b6e5d6e7!2sDiani%20Beach!5e0!3m2!1sen!2ske!4v1712345678901" height="400" style="border:0; width:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+
+            <!-- ========== FOOTER ========== -->
+            <footer class="footer">
+                <div class="top-footer">
+                  <div class="container">
+                    <div class="content-footer-top">
+                        <div class="footer-logo"><a href="/index.html"><img src="/images/logo/darklogo.png" alt="logo" width="166" height="48"></a></div>
+                        <div class="wd-social">
+                          <span>Follow Us:</span>
+                          <ul class="list-social d-flex align-items-center">
+                            <li><a href="#" class="box-icon w-40 social"><svg class="icon" width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.60547 9L8.00541 6.10437H5.50481V4.22531C5.50481 3.43313 5.85413 2.66094 6.97406 2.66094H8.11087V0.195625C8.11087 0.195625 7.07925 0 6.09291 0C4.03359 0 2.68753 1.38688 2.68753 3.8975V6.10437H0.398438V9H2.68753V16H5.50481V9H7.60547Z" fill="white"/></svg></a></li>
+                            <li><a href="#" class="box-icon w-40 social"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.58151 16H0.264292V5.31762H3.58151V16ZM1.92111 3.86044C0.860376 3.86044 0 2.98185 0 1.92111C7.59231e-09 1.4116 0.202603 0.92296 0.562681 0.562681C0.92296 0.202603 1.4116 0 1.92111 0C2.43063 0 2.91927 0.202603 3.27955 0.562681C3.63983 0.92296 3.84223 1.4116 3.84223 1.92111C3.84223 2.98185 2.98149 3.86044 1.92111 3.86044ZM15.9968 16H12.6867V10.7999C12.6867 9.56057 12.6617 7.97125 10.962 7.97125C9.23735 7.97125 8.97306 9.31771 8.97306 10.7106V16H5.65941V5.31762H8.84091V6.77479H8.88734C9.33021 5.93549 10.412 5.04976 12.026 5.04976C15.3832 5.04976 16.0004 7.26052 16.0004 10.132V16H15.9968Z" fill="white"/></svg></a></li>
+                            <li><a href="#" class="box-icon w-40 social"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.30314 5.92804L13.4029 0H12.1944L7.7663 5.14724L4.22958 0H0.150391L5.4986 7.78354L0.150391 14H1.35894L6.03514 8.56434L9.77017 14H13.8494L8.30284 5.92804H8.30314ZM6.64787 7.85211L6.10598 7.07705L1.79439 0.909771H3.65065L7.13015 5.88696L7.67204 6.66202L12.195 13.1316H10.3387L6.64787 7.85241V7.85211Z" fill="white"/></svg></a></li>
+                            <li><a href="#" class="box-icon w-40 social"><svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.53967 0C3.2506 0 0 2.19271 0 5.74145C0 7.99827 1.26947 9.28056 2.03884 9.28056C2.3562 9.28056 2.53893 8.39578 2.53893 8.14574C2.53893 7.8476 1.77918 7.21287 1.77918 5.97226C1.77918 3.39486 3.74108 1.5676 6.28001 1.5676C8.4631 1.5676 10.0788 2.80821 10.0788 5.08748C10.0788 6.78972 9.39597 9.98261 7.18402 9.98261C6.3858 9.98261 5.70298 9.40558 5.70298 8.57851C5.70298 7.36675 6.54929 6.19345 6.54929 4.94322C6.54929 2.82103 3.53912 3.20572 3.53912 5.7703C3.53912 6.30886 3.60644 6.90512 3.84686 7.3956C3.40448 9.2998 2.50046 12.1369 2.50046 14.0988C2.50046 14.7046 2.58702 15.3009 2.64472 15.9068C2.75371 16.0286 2.69922 16.0158 2.86591 15.9549C4.4816 13.7429 4.42389 13.3102 5.1548 10.4154C5.5491 11.1655 6.56852 11.5694 7.37636 11.5694C10.7808 11.5694 12.31 8.25152 12.31 5.26059C12.31 2.07731 9.55946 0 6.53967 0Z" fill="white"/></svg></a></li>
+                            <li><a href="#" class="box-icon w-40 social"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.99812 4.66567C5.71277 4.66567 4.66383 5.71463 4.66383 7C4.66383 8.28537 5.71277 9.33433 6.99812 9.33433C8.28346 9.33433 9.3324 8.28537 9.3324 7C9.3324 5.71463 8.28346 4.66567 6.99812 4.66567ZM13.9992 7C13.9992 6.03335 14.008 5.07545 13.9537 4.11055C13.8994 2.98979 13.6437 1.99512 12.8242 1.17556C12.0029 0.35426 11.01 0.100338 9.88927 0.0460516C8.92263 -0.00823506 7.96475 0.000520879 6.99987 0.000520879C6.03323 0.000520879 5.07536 -0.00823506 4.11047 0.0460516C2.98973 0.100338 1.99508 0.356011 1.17554 1.17556C0.354253 1.99687 0.100336 2.98979 0.0460508 4.11055C-0.00823491 5.0772 0.00052087 6.0351 0.00052087 7C0.00052087 7.9649 -0.00823491 8.92455 0.0460508 9.88945C0.100336 11.0102 0.356004 12.0049 1.17554 12.8244C1.99683 13.6457 2.98973 13.8997 4.11047 13.9539C5.07711 14.0082 6.03499 13.9995 6.99987 13.9995C7.9665 13.9995 8.92438 14.0082 9.88927 13.9539C11.01 13.8997 12.0047 13.644 12.8242 12.8244C13.6455 12.0031 13.8994 11.0102 13.9537 9.88945C14.0097 8.92455 13.9992 7.96665 13.9992 7ZM6.99812 10.5917C5.01056 10.5917 3.40651 8.98759 3.40651 7C3.40651 5.01241 5.01056 3.40832 6.99812 3.40832C8.98567 3.40832 10.5897 5.01241 10.5897 7C10.5897 8.98759 8.98567 10.5917 6.99812 10.5917ZM10.7368 4.10004C10.2728 4.10004 9.89802 3.72529 9.89802 3.26122C9.89802 2.79716 10.2728 2.42241 10.7368 2.42241C11.2009 2.42241 11.5756 2.79716 11.5756 3.26122C11.5758 3.37142 11.5542 3.48056 11.5121 3.58239C11.47 3.68422 11.4082 3.77675 11.3303 3.85467C11.2523 3.93258 11.1598 3.99437 11.058 4.03647C10.9562 4.07858 10.847 4.10018 10.7368 4.10004Z" fill="white"/></svg></a></li>
+                            <li><a href="#" class="box-icon w-40 social"><svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.6657 1.76024C15.4817 1.06737 14.9395 0.521689 14.2511 0.336504C13.0033 0 8 0 8 0C8 0 2.99669 0 1.7489 0.336504C1.06052 0.521718 0.518349 1.06737 0.334336 1.76024C0 3.01611 0 5.63636 0 5.63636C0 5.63636 0 8.25661 0.334336 9.51248C0.518349 10.2053 1.06052 10.7283 1.7489 10.9135C2.99669 11.25 8 11.25 8 11.25C8 11.25 13.0033 11.25 14.2511 10.9135C14.9395 10.7283 15.4817 10.2053 15.6657 9.51248C16 8.25661 16 5.63636 16 5.63636C16 5.63636 16 3.01611 15.6657 1.76024ZM6.36363 8.01535V3.25737L10.5454 5.63642L6.36363 8.01535Z" fill="white"/></svg></a></li>
+                          </ul>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="inner-footer">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-6">
+                        <div class="footer-cl-1">
+                          <p class="text-variant-2">Specializes in providing high-class tours for those in need. Contact Us</p>
+                          <ul class="mt-12">
+                            <li class="mt-12 d-flex align-items-center gap-8">
+                                <i class="icon icon-mapPinLine fs-20 text-variant-2"></i>
+                                <p class="text-white">Mombasa, Kenya</p>
+                            </li>
+                            <li class="mt-12 d-flex align-items-center gap-8">
+                                <i class="icon icon-phone2 fs-20 text-variant-2"></i>
+                                <a href="tel:+254 791 599 991" class="text-white caption-1">+254 791 599 991</a>
+                            </li>
+                            <li class="mt-12 d-flex align-items-center gap-8">
+                                <i class="icon icon-mail fs-20 text-variant-2"></i>
+                                <p class="text-white">Onyangom383@gmail.com</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-lg-2 col-md-6">
+                        <div class="footer-cl-2 footer-col-block">
+                            <div class="fw-7 text-white footer-heading-mobile">Categories</div>
+                            <div class="tf-collapse-content">
+                                <ul class="mt-10 navigation-menu-footer">
+                                    <li> <a href="/pricing.html" class="caption-1 text-variant-2">Pricing Plans</a> </li>
+                                    <li> <a href="/our-service.html" class="caption-1 text-variant-2">Our Services</a> </li>
+                                    <li> <a href="/about-us.html" class="caption-1 text-variant-2">About Us</a> </li>
+                                    <li> <a href="/contact.html" class="caption-1 text-variant-2">Contact Us</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-2 col-md-6">
+                        <div class="footer-cl-3 footer-col-block">
+                            <div class="fw-7 text-white footer-heading-mobile">Our Company</div>
+                            <div class="tf-collapse-content">
+                                <ul class="mt-10 navigation-menu-footer">
+                                    <li> <a href="/topmap-list.html" class="caption-1 text-variant-2">Property For Sale</a> </li>
+                                    <li> <a href="/topmap-grid.html" class="caption-1 text-variant-2">Property For Rent</a> </li>
+                                    <li> <a href="/topmap-grid.html" class="caption-1 text-variant-2">Property For Buy</a> </li>
+                                    <li> <a href="/topmap-grid.html" class="caption-1 text-variant-2">Our Agents</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6">
+                        <div class="footer-cl-4 footer-col-block">
+                            <div class="fw-7 text-white footer-heading-mobile">Newsletter</div>
+                            <div class="tf-collapse-content">
+                                <p class="mt-12 text-variant-2">Your Weekly/Monthly Dose of Knowledge and Inspiration</p>
+                                <form class="mt-12" id="subscribe-form" action="#" method="post" accept-charset="utf-8" data-mailchimp="true">
+                                    <div id="subscribe-content">
+                                        <input type="email" name="email-form" id="subscribe-email" placeholder="Your email address"/>
+                                        <button type="button" id="subscribe-button" class="button-subscribe">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.00044 9.99935L2.72461 2.60352C8.16867 4.18685 13.3024 6.68806 17.9046 9.99935C13.3027 13.3106 8.16921 15.8118 2.72544 17.3952L5.00044 9.99935ZM5.00044 9.99935H11.2504" stroke="#1563DF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div id="subscribe-msg"></div>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-footer">
+                  <div class="container">
+                    <div class="content-footer-bottom">
+                        <div class="copyright">©2026 Luopian. All Rights Reserved.</div>
+                        <ul class="menu-bottom">
+                          <li><a href="/our-service.html">Terms Of Services</a> </li>
+                          <li><a href="/pricing.html">Privacy Policy</a> </li>
+                          <li><a href="/contact.html">Cookie Policy</a> </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+            </footer>
+            <!-- end footer -->
+        </div>
+        <!-- /#page -->
+    </div>
+
+    <!-- go top -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 286.138;"></path>
+        </svg>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="/js/carousel.js"></script>
+    <script type="text/javascript" src="/js/plugin.js"></script>
+    <script type="text/javascript" src="/js/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="/js/rangle-slider.js"></script>
+    <script type="text/javascript" src="/js/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="/js/shortcodes.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle carousel on "View More" click
+            document.querySelectorAll('.view-more-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const wrapper = document.getElementById(targetId);
+                    if (wrapper) {
+                        const isActive = wrapper.classList.contains('active');
+                        if (isActive) {
+                            wrapper.classList.remove('active');
+                            this.classList.remove('expanded');
+                            this.innerHTML = 'View More <span class="icon icon-arrow-down"></span>';
+                        } else {
+                            wrapper.classList.add('active');
+                            this.classList.add('expanded');
+                            this.innerHTML = 'View Less <span class="icon icon-arrow-up"></span>';
+                            // Initialize Swiper if not already
+                            const swiperEl = wrapper.querySelector('.swiper-room');
+                            if (swiperEl && !swiperEl.swiper) {
+                                new Swiper(swiperEl, {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                    loop: true,
+                                    pagination: {
+                                        el: wrapper.querySelector('.swiper-pagination'),
+                                        clickable: true,
+                                    },
+                                    navigation: {
+                                        nextEl: wrapper.querySelector('.swiper-button-next'),
+                                        prevEl: wrapper.querySelector('.swiper-button-prev'),
+                                    },
+                                    breakpoints: {
+                                        640: { slidesPerView: 2, spaceBetween: 20 },
+                                        992: { slidesPerView: 3, spaceBetween: 30 }
+                                    }
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
